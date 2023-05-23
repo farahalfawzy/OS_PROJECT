@@ -42,7 +42,7 @@ public class Memory {
 
 	}
 
-	public void loadProcess(int processID) {
+	public void isLoaded(int processID) {
 		if ((memory[0] != null && memory[0].equals(processID)) || (memory[5] != null && memory[5].equals(processID)))
 			return;
 		Process process = OS.loadProcess();

@@ -7,6 +7,14 @@ public class Variable implements Serializable {
 	private String name;
 	private Object Value;
 
+	public Variable() {
+
+	}
+
+	public Variable(String name) {
+		this.name = name;
+	}
+
 	public String getName() {
 		return name;
 	}

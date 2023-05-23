@@ -12,8 +12,8 @@ public class Process implements Serializable {
 	private ArrayList<String> instructions = new ArrayList<String>();
 	private Variable variable1 = new Variable();
 	private Variable variable2 = new Variable();
-	private Variable assignmentTemp = new Variable();
-
+	private Variable assignmentTemp = new Variable("temp");
+	
 	public PCB getPCB() {
 		return PCB;
 	}
