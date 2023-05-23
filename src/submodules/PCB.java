@@ -8,7 +8,7 @@ public class PCB implements Serializable {
 	private int PID;
 	private PState state;
 	private int PC = 0;
-	private int[] kernalBound = new int[2];
+	private int[] kernelBound = new int[2];
 	private int[] userBound = new int[2];
 
 	public PCB() {
@@ -40,17 +40,17 @@ public class PCB implements Serializable {
 		PC = pC;
 	}
 
-	public int[] getKernalBound() {
-		return kernalBound;
+	public int[] getKernelBound() {
+		return kernelBound;
 	}
 
-	public void setKernalBound(int min, int max) {
-		kernalBound[0] = min;
-		kernalBound[1] = max;
+	public void setKernelBound(int min, int max) {
+		kernelBound[0] = min;
+		kernelBound[1] = max;
 	}
 
-	public void setKernalBound(int[] kernalBound) {
-		this.kernalBound = kernalBound;
+	public void setKernelBound(int[] kernelBound) {
+		this.kernelBound = kernelBound;
 	}
 
 	public int[] getUserBound() {

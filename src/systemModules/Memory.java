@@ -17,9 +17,9 @@ public class Memory {
 				process.getPCB().setPC(10);
 			else if (currentPc >= 25)
 				process.getPCB().setPC(currentPc - 15);
-			process.getPCB().setKernalBound(0, 4);
+			process.getPCB().setKernelBound(0, 4);
 			process.getPCB().setUserBound(10, 24);
-			fillKernalMemory(0, process.getPCB());
+			fillKernelMemory(0, process.getPCB());
 			fillUserMemory(10, process);
 			return;
 		} else if (memory[5] == null) {
@@ -30,9 +30,9 @@ public class Memory {
 				process.getPCB().setPC(25);
 			else if (currentPc < 25)
 				process.getPCB().setPC(currentPc + 15);
-			process.getPCB().setKernalBound(5, 10);
+			process.getPCB().setKernelBound(5, 10);
 			process.getPCB().setUserBound(25, 39);
-			fillKernalMemory(5, process.getPCB());
+			fillKernelMemory(5, process.getPCB());
 			fillUserMemory(25, process);
 			return;
 		} else {
@@ -63,12 +63,12 @@ public class Memory {
 		memory[startUser] = process.getAssignmentTemp();
 	}
 
-	public void fillKernalMemory(int startKernal, PCB pcb) {
-		memory[startKernal++] = pcb.getPID();
-		memory[startKernal++] = pcb.getState();
-		memory[startKernal++] = pcb.getPC();
-		memory[startKernal++] = pcb.getKernalBound();
-		memory[startKernal] = pcb.getUserBound();
+	public void fillKernelMemory(int startKernel, PCB pcb) {
+		memory[startKernel++] = pcb.getPID();
+		memory[startKernel++] = pcb.getState();
+		memory[startKernel++] = pcb.getPC();
+		memory[startKernel++] = pcb.getKernelBound();
+		memory[startKernel] = pcb.getUserBound();
 	}
 
 	public void swapToDisk() {
@@ -85,14 +85,14 @@ public class Memory {
 		}
 	}
 
-	public Process rebuildProcess(int startKernal, int startUser) {
+	public Process rebuildProcess(int startKernel, int startUser) {
 		Process process = new Process();
 		process.setPCB(new PCB());
-		process.getPCB().setPID((int) memory[startKernal++]);
-		process.getPCB().setState((PState) memory[startKernal++]);
-		process.getPCB().setPC((int) memory[startKernal++]);
-		process.getPCB().setKernalBound((int[]) memory[startKernal++]);
-		process.getPCB().setUserBound((int[]) memory[startKernal]);
+		process.getPCB().setPID((int) memory[startKernel++]);
+		process.getPCB().setState((PState) memory[startKernel++]);
+		process.getPCB().setPC((int) memory[startKernel++]);
+		process.getPCB().setKernelBound((int[]) memory[startKernel++]);
+		process.getPCB().setUserBound((int[]) memory[startKernel]);
 		int temp = startUser;
 		while (startUser < temp + 15)
 			if (memory[startUser++] instanceof Variable)
