@@ -7,6 +7,8 @@ import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import application.Interpreter;
+import submodules.PState;
 import systemModules.Memory;
 import systemModules.Mutex;
 import systemModules.Scheduler;
@@ -14,10 +16,10 @@ import systemModules.Scheduler;
 public class OS {
 	private static Queue<Integer> blockedQueue = new LinkedList<>();
 	private static Queue<Integer> readyQueue = new LinkedList<>();
-	private static int runningProcess = 0;
+	private static int runningProcess = -1;
 	private static int time = 0;
-	private Scheduler scheduler = new Scheduler();
-	private Memory memory = new Memory();
+	private static Scheduler scheduler = new Scheduler();
+	private static Memory memory = new Memory();
 	private Mutex userInput = new Mutex(1);
 	private Mutex userOutput = new Mutex(1);
 	private Mutex file = new Mutex(1);
@@ -43,11 +45,58 @@ public class OS {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		restoredProcess.getPCB().setState(PState.READY);
 		return restoredProcess;
 	}
 
 	public void runInterpreter(int timeSlice, int[] programOrder, int[] arrival) {
+		scheduler.setMaxSlice(timeSlice);
+		int finished = 0;
+		int arrived = 0;
+		while (true) {
+			time++;
+			if (time == arrival[arrived])
+				break;
+		}
+		Interpreter interpreter = new Interpreter();
+		systemModules.Process process = interpreter.readProgram(programOrder[arrived++]);
+		getMemory().loadProcess(process);
+		int processId = process.getPCB().getPID();
+		readyQueue.add(processId);
+		// !readyQueue.isEmpty() || runningProcess != -1) { // what if someone came and
+		// finished and the other is not here yet
+		while (finished < programOrder.length) {
+			if (runningProcess == -1)
+				scheduler.dispatch();
+			scheduler.decrementRunSlice();
+			interpreter.executeInstr("");// resolve input later.........................................................
+			if (getMemory().isFinished(processId))
+				finished++;
+			if (getMemory().getProcessState(runningProcess).equals(PState.BLOCKED) || getMemory().isFinished(processId))
+				setRunningProcess(-1);
+			else if (scheduler.sliceFinished())
+				scheduler.preempt();
+			if (arrived < arrival.length && time == arrival[arrived]) {
+				process = interpreter.readProgram(programOrder[arrived++]);
+				getMemory().loadProcess(process);
+				processId = process.getPCB().getPID();
+				readyQueue.add(processId);
+			}
+			time++;
+		}
 
+	}
+
+	public static void blockProcess() {
+		blockedQueue.add(runningProcess);
+		getMemory().setProcessState(runningProcess, PState.BLOCKED);
+		setRunningProcess(-1);
+	}
+
+	public static void unBlockProcess(int processId) {
+		blockedQueue.remove(processId);
+		readyQueue.add(processId);
+		getMemory().setProcessState(processId, PState.READY);
 	}
 
 	public static Queue<Integer> getBlockedQueue() {
@@ -64,5 +113,13 @@ public class OS {
 
 	public static int getRunningProcess() {
 		return runningProcess;
+	}
+
+	public static void setRunningProcess(int runningProcess) {
+		OS.runningProcess = runningProcess;
+	}
+
+	public static Memory getMemory() {
+		return memory;
 	}
 }

@@ -17,6 +17,7 @@ public class Memory {
 				process.getPCB().setPC(10);
 			else if (currentPc >= 25)
 				process.getPCB().setPC(currentPc - 15);
+			process.getPCB().setState(PState.READY);
 			process.getPCB().setKernelBound(0, 4);
 			process.getPCB().setUserBound(10, 24);
 			fillKernelMemory(0, process.getPCB());
@@ -30,6 +31,7 @@ public class Memory {
 				process.getPCB().setPC(25);
 			else if (currentPc < 25)
 				process.getPCB().setPC(currentPc + 15);
+			process.getPCB().setState(PState.READY);
 			process.getPCB().setKernelBound(5, 10);
 			process.getPCB().setUserBound(25, 39);
 			fillKernelMemory(5, process.getPCB());
@@ -104,4 +106,63 @@ public class Memory {
 		process.setAssignmentTemp((Variable) memory[startUser]);
 		return process;
 	}
+
+	public PCB rebuildPCB(int processId) {
+		PCB pcb = new PCB();
+		int startKernel = 0;
+		if (memory[5] != null && memory[5].equals(processId))
+			startKernel = 5;
+		pcb.setPID((int) memory[startKernel++]);
+		pcb.setState((PState) memory[startKernel++]);
+		pcb.setPC((int) memory[startKernel++]);
+		pcb.setKernelBound((int[]) memory[startKernel++]);
+		pcb.setUserBound((int[]) memory[startKernel]);
+		return pcb;
+	}
+
+	public PState getProcessState(int processId) {
+		if (memory[5] != null && memory[5].equals(processId))
+			return (PState) memory[6];
+		else if (memory[0] != null && memory[0].equals(processId))
+			return (PState) memory[1];
+		return null;
+	}
+
+	public void setProcessState(int processId, PState state) {
+		if (memory[5] != null && memory[5].equals(processId))
+			memory[6] = state;
+		else if (memory[0] != null && memory[0].equals(processId))
+			memory[1] = state;
+	}
+
+	public String getInstruction(int processID) {
+		int PC = -1;
+		if (memory[0] != null && memory[0].equals(processID))
+			PC = (Integer) memory[2];
+
+		if (memory[5] != null && memory[5].equals(processID))
+			PC = (Integer) memory[7];
+		memory[processID] = (Integer) memory[processID] + 1;
+		return (String) memory[PC];
+	}
+
+	public boolean isFinished(int processID) {
+		int PC = -1;
+		if (memory[0] != null && memory[0].equals(processID))
+			PC = (Integer) memory[2];
+
+		if (memory[5] != null && memory[5].equals(processID))
+			PC = (Integer) memory[7];
+		if (memory[PC] instanceof Variable) {
+			setProcessState(processID, PState.FINISHED);
+			return true;
+		}
+		return false;
+
+	}
+
+	public Object[] getMemory() {
+		return memory;
+	}
+
 }

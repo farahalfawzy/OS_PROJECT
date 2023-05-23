@@ -24,7 +24,8 @@ public class Mutex {
 			mutex.value = MutexValue.ZERO;
 		} else {
 			mutex.blockedQueue.add(OS.getRunningProcess());
-			OS.getBlockedQueue().add(OS.getRunningProcess());
+			//OS.getBlockedQueue().add(OS.getRunningProcess());
+			OS.blockProcess();
 			// block it in the main blocked queue
 		}
 	}
@@ -38,8 +39,9 @@ public class Mutex {
 		else {
 			int processId = mutex.blockedQueue.remove();
 			mutex.owner = processId;
-			OS.getBlockedQueue().remove(processId);
-			OS.getReadyQueue().add(processId);
+			OS.unBlockProcess(processId);
+//			OS.getBlockedQueue().remove(processId);
+//			OS.getReadyQueue().add(processId);
 			// put p in readylist
 		}
 	}
