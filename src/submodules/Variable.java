@@ -30,5 +30,8 @@ public class Variable implements Serializable {
 	public void setValue(Object value) {
 		Value = value;
 	}
-
+	public Variable(String name, Object Value) { //new 
+		this.name = name;
+		this.Value = Value;
+	}
 }

@@ -20,9 +20,9 @@ public class OS {
 	private static int time = 0;
 	private static Scheduler scheduler = new Scheduler();
 	private static Memory memory = new Memory();
-	private Mutex userInput = new Mutex(1);
-	private Mutex userOutput = new Mutex(1);
-	private Mutex file = new Mutex(1);
+	private static Mutex userInput = new Mutex(1);
+	private static Mutex userOutput = new Mutex(1);
+	private static Mutex file = new Mutex(1);
 
 	public static void unloadProcess(systemModules.Process process) {
 		String filePath = "disk";/// enter later
@@ -69,8 +69,8 @@ public class OS {
 			if (runningProcess == -1)
 				scheduler.dispatch();
 			scheduler.decrementRunSlice();
-			interpreter.executeInstr("");// resolve input later.........................................................
-			if (getMemory().isFinished(processId))
+			interpreter.executeInstr(runningProcess);// resolve input later.........................................................
+			if (getMemory().isFinished(runningProcess))
 				finished++;
 			if (getMemory().getProcessState(runningProcess).equals(PState.BLOCKED) || getMemory().isFinished(processId))
 				setRunningProcess(-1);
@@ -85,6 +85,34 @@ public class OS {
 			time++;
 		}
 
+	}
+
+	public static Mutex getUserInput() {
+		return userInput;
+	}
+
+	public void setUserInput(Mutex userInput) {
+		this.userInput = userInput;
+	}
+
+	public static Mutex getUserOutput() {
+		return userOutput;
+	}
+
+	public void setUserOutput(Mutex userOutput) {
+		this.userOutput = userOutput;
+	}
+
+	public static Mutex getFile() {
+		return file;
+	}
+
+	public void setFile(Mutex file) {
+		this.file = file;
+	}
+
+	public static void setMemory(Memory memory) {
+		OS.memory = memory;
 	}
 
 	public static void blockProcess() {

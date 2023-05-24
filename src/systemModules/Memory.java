@@ -135,16 +135,7 @@ public class Memory {
 			memory[1] = state;
 	}
 
-	public String getInstruction(int processID) {
-		int PC = -1;
-		if (memory[0] != null && memory[0].equals(processID))
-			PC = (Integer) memory[2];
 
-		if (memory[5] != null && memory[5].equals(processID))
-			PC = (Integer) memory[7];
-		memory[processID] = (Integer) memory[processID] + 1;
-		return (String) memory[PC];
-	}
 
 	public boolean isFinished(int processID) {
 		int PC = -1;
@@ -164,5 +155,53 @@ public class Memory {
 	public Object[] getMemory() {
 		return memory;
 	}
+	//new
+		public String getInstruction(int processID) {
+			int PC = -1;
+			if (memory[0] != null && memory[0].equals(processID)) {
+				PC = (Integer) memory[2];
+				memory[2]=(Integer)memory[2]+1;
+			}
 
+			if (memory[5] != null && memory[5].equals(processID)) {
+				PC = (Integer) memory[7];
+				memory[7]=(Integer)memory[7]+1;
+
+			}
+			return (String)memory[PC];
+
+		}
+		public Object getVariable(int processID,String variable) {
+			if (memory[0] != null && memory[0].equals(processID)) {
+				int endUser=((int[])memory[4])[1]-2;
+				for(int i=0;i<3;i++) {
+					if(((Variable)memory[endUser+i]).getName().equalsIgnoreCase(variable)) {
+						return ((Variable)memory[endUser+i]).getValue();
+					}
+				}
+			}
+			if (memory[5] != null && memory[5].equals(processID)) {
+				int endUser=((int[])memory[9])[1]-2;
+				for(int i=0;i<3;i++) {
+					if(((Variable)memory[endUser+i]).getName().equalsIgnoreCase(variable)) {
+						return ((Variable)memory[endUser+i]).getValue();
+					}
+				}
+			}
+			return null;
+		}
+		public void setVariable(int processID, Variable variable){
+			int endUser=0;
+			if (memory[0] != null && memory[0].equals(processID)) 
+				 endUser=((int[])memory[4])[1]-2;
+			else
+				 endUser=((int[])memory[9])[1]-2;
+			for(int i=0;i<3;i++) {
+				if(memory[endUser+i]==null) {
+					memory[endUser+i]=variable;
+					return;
+				}
+			}
+
+		}
 }

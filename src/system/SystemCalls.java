@@ -11,11 +11,11 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 
 public class SystemCalls {
-	public static void printData(String s) {
+	public static void printData(Object s) {
 		System.out.println(s);
 	}
 
-	public static String takeInput() {
+	public static Object takeInput() {
 		Scanner sc = new Scanner(System.in);
 		String input = sc.nextLine();
 		return input;
