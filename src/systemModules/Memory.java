@@ -62,7 +62,7 @@ public class Memory {
 			memory[startUser++] = instruction;
 		memory[startUser++] = process.getVariable1();
 		memory[startUser++] = process.getVariable2();
-		memory[startUser] = process.getAssignmentTemp();
+		memory[startUser] = process.getVariable3();
 	}
 
 	public void fillKernelMemory(int startKernel, PCB pcb) {
@@ -103,7 +103,7 @@ public class Memory {
 				process.getInstructions().add((String) memory[startUser]);
 		process.setVariable1((Variable) memory[startUser++]);
 		process.setVariable2((Variable) memory[startUser++]);
-		process.setAssignmentTemp((Variable) memory[startUser]);
+		process.setVariable3((Variable) memory[startUser]);
 		return process;
 	}
 

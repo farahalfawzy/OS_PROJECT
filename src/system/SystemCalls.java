@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Scanner;
+
+import submodules.Variable;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
@@ -55,6 +58,15 @@ public class SystemCalls {
 		}
 	}
 
+	public static Object readFromMem(int processID, String variable) {
+		return OS.getMemory().getVariable(processID, variable);
+	}
+	public static void writeToMem(int processID, Object data, String varName){
+		Variable v = new Variable(varName, data);
+		OS.getMemory().setVariable(processID, v);
+		
+	}
+	
 	
 
 }

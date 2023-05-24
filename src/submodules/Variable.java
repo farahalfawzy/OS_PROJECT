@@ -34,4 +34,10 @@ public class Variable implements Serializable {
 		this.name = name;
 		this.Value = Value;
 	}
+
+	@Override
+	public String toString() {
+		if(name==null || Value ==null) return "";
+		return "Variable [name=" + name + ", Value=" + Value + "]";
+	}
 }

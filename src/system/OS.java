@@ -1,7 +1,10 @@
 package system;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.LinkedList;
@@ -23,9 +26,31 @@ public class OS {
 	private static Mutex userInput = new Mutex(1);
 	private static Mutex userOutput = new Mutex(1);
 	private static Mutex file = new Mutex(1);
+	private static Object[] temp = new Object[3];
+
+	
 
 	public static void unloadProcess(systemModules.Process process) {
-		String filePath = "disk";/// enter later
+		String filePath = "programFiles/diskSerialized.ser";/// enter later
+		String textFilePath="programFiles/disk.txt";
+		//write in text file
+		try { // if not found create file
+			File myObj = new File(textFilePath);
+			if (myObj.createNewFile()) {
+			} else {
+				// System.out.println("File already exists.");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try { // if file is found write over it
+			FileWriter myWriter = new FileWriter(textFilePath);
+			myWriter.write(process.toString());
+			myWriter.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		//serializing process
 		try {
 			ObjectOutputStream ObjectOutputStream = new ObjectOutputStream(new FileOutputStream(filePath));
 			ObjectOutputStream.writeObject(process);
@@ -37,7 +62,16 @@ public class OS {
 
 	public static systemModules.Process loadProcess() {
 		systemModules.Process restoredProcess = null;
-		String filePath = "disk";/// enter later
+		String filePath = "programFiles/diskSerialized.ser";/// enter later
+		String textFilePath="programFiles/disk.txt";
+
+		try { // delete content of Disk.txt
+			FileWriter myWriter = new FileWriter(textFilePath);
+			myWriter.write("");
+			myWriter.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		try {
 			ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(filePath));
 			restoredProcess = (systemModules.Process) objectInputStream.readObject();
@@ -69,7 +103,7 @@ public class OS {
 			if (runningProcess == -1)
 				scheduler.dispatch();
 			scheduler.decrementRunSlice();
-			interpreter.executeInstr(runningProcess);// resolve input later.........................................................
+			interpreter.executeInstr(runningProcess,memory.getInstruction(runningProcess));// resolve input
 			if (getMemory().isFinished(runningProcess))
 				finished++;
 			if (getMemory().getProcessState(runningProcess).equals(PState.BLOCKED) || getMemory().isFinished(processId))
@@ -149,5 +183,12 @@ public class OS {
 
 	public static Memory getMemory() {
 		return memory;
+	}
+	public static Object[] getTemp() {
+		return temp;
+	}
+
+	public static void setTemp(Object[] temp) {
+		OS.temp = temp;
 	}
 }

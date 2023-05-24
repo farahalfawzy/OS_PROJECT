@@ -21,12 +21,12 @@ public class Interpreter {
 			while (line != null) {
 				if (line.startsWith("assign")) {
 					String[] assignInstr = line.split(" ");
-					if (assignInstr[2].equalsIgnoreCase("input")) {
+					if (assignInstr[2].equalsIgnoreCase("input")) {// no longer temp
 						process.getInstructions().add("input");
-						process.getInstructions().add(assignInstr[0] + " " + assignInstr[1] + " temp");
+						process.getInstructions().add(assignInstr[0] + " " + assignInstr[1] + " input");
 					} else if (assignInstr[2].equalsIgnoreCase("readFile")) {
 						process.getInstructions().add(assignInstr[2] + " " + assignInstr[3]);
-						process.getInstructions().add(assignInstr[0] + " " + assignInstr[1] + " temp");
+						process.getInstructions().add(assignInstr[0] + " " + assignInstr[1] + " readFile");
 					} else
 						process.getInstructions().add(line);
 
@@ -43,76 +43,88 @@ public class Interpreter {
 
 	}
 
-	public void executeInstr(int processID) {
-		String instruction = OS.getMemory().getInstruction(processID);
+	public void executeInstr(int processID, String instruction) {
+	//	String instruction = OS.getMemory().getInstruction(processID);
 		String[] instructionSplit = instruction.split(" ");
-		switch(instructionSplit[0]) {
-		case "print": 
-			Object variableValue=OS.getMemory().getVariable(processID,instructionSplit[1]);
-			system.SystemCalls.printData(variableValue.toString());break;
-		case "assign": //assign x y
-			 variableValue=OS.getMemory().getVariable(processID,instructionSplit[2]);
-			 Variable v=new Variable(instructionSplit[1],variableValue);
-			 OS.getMemory().setVariable(processID,v);
+		switch (instructionSplit[0]) {
+		case "print":
+			Object variableValue = system.SystemCalls.readFromMem(processID, instructionSplit[1]);
+			system.SystemCalls.printData(variableValue.toString());
 			break;
-		case "input":	
-				system.SystemCalls.printData("Please enter a Value");
-				Object input=system.SystemCalls.takeInput();
-				 v=new Variable("temp",input);
-				 OS.getMemory().setVariable(processID,v);
-				 break;
-		case "writeFile"://writeFile x y
-			variableValue=OS.getMemory().getVariable(processID,instructionSplit[2]);
+		case "assign": // assign x y
+			if (instructionSplit[2].equalsIgnoreCase("input") || instructionSplit[2].equalsIgnoreCase("readFile")) {
+				variableValue = OS.getTemp()[processID];
+			} else {
+				variableValue = system.SystemCalls.readFromMem(processID, instructionSplit[2]);
+			}
+			
+			system.SystemCalls.writeToMem(processID,variableValue,instructionSplit[1]);
+			break;
+		case "input":
+			system.SystemCalls.printData("Please enter a Value");
+			Object input = system.SystemCalls.takeInput();
+			OS.getTemp()[processID] = input;
+//				 v=new Variable("temp",input);
+//				 OS.getMemory().setVariable(processID,v);
+			break;
+		case "writeFile":// writeFile x y
+			variableValue = system.SystemCalls.readFromMem(processID, instructionSplit[2]);
 			system.SystemCalls.writeFile(instructionSplit[1], variableValue.toString());
 			break;
-		case "readFile"://readFile x
+		case "readFile":// readFile x
 			try {
-				system.SystemCalls.readFile(instructionSplit[1].toString());
+				String file = system.SystemCalls.readFile(instructionSplit[1].toString());
+				OS.getTemp()[processID] = file;
 				break;
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		case "printFromTo"://printFromTo x y
-			int startNumber=Integer.parseInt(instructionSplit[1]);
-			int endNumber=Integer.parseInt(instructionSplit[2]);
-			while(startNumber<=endNumber) 
+		case "printFromTo":// printFromTo x y
+			int startNumber = Integer.parseInt(instructionSplit[1]);
+			int endNumber = Integer.parseInt(instructionSplit[2]);
+			while (startNumber <= endNumber)
 				system.SystemCalls.printData(startNumber++);
 			break;
 		case "semWait":
 			Mutex mutex;
-			switch(instructionSplit[1]) {
-				case "userInput":
-					 mutex=OS.getUserInput();
-					Mutex.semWait(mutex); break;
-				case "userOutput":
-					 mutex=OS.getUserOutput();
-					Mutex.semWait(mutex); break;
-				case "file":
-					 mutex=OS.getFile();
-					Mutex.semWait(mutex); break;	
-			
-			}
-			break;
-		
-		case "semSignal":	
-		
-			switch(instructionSplit[1]) {
-				case "userInput":
-					 mutex=OS.getUserInput();
-					Mutex.semSignal(mutex); break;
-				case "userOutput":
-					 mutex=OS.getUserOutput();
-					Mutex.semSignal(mutex); break;
-				case "file":
-					 mutex=OS.getFile();
-					Mutex.semSignal(mutex); break;	
-			
+			switch (instructionSplit[1]) {
+			case "userInput":
+				mutex = OS.getUserInput();
+				Mutex.semWait(mutex);
+				break;
+			case "userOutput":
+				mutex = OS.getUserOutput();
+				Mutex.semWait(mutex);
+				break;
+			case "file":
+				mutex = OS.getFile();
+				Mutex.semWait(mutex);
+				break;
+
 			}
 			break;
 
-			
+		case "semSignal":
+
+			switch (instructionSplit[1]) {
+			case "userInput":
+				mutex = OS.getUserInput();
+				Mutex.semSignal(mutex);
+				break;
+			case "userOutput":
+				mutex = OS.getUserOutput();
+				Mutex.semSignal(mutex);
+				break;
+			case "file":
+				mutex = OS.getFile();
+				Mutex.semSignal(mutex);
+				break;
+
+			}
+			break;
+
 		}
-	
+
 	}
 }

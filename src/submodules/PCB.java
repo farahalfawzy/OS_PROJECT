@@ -1,8 +1,11 @@
 package submodules;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 public class PCB implements Serializable {
+
+
 	private static final long serialVersionUID = 1L;
 	public static int id = 0;
 	private int PID;
@@ -66,5 +69,9 @@ public class PCB implements Serializable {
 	public void setUserBound(int[] userBound) {
 		this.userBound = userBound;
 	}
-
+	@Override
+	public String toString() {
+		return "PCB [PID=" + PID + ", state=" + state + ", PC=" + PC + ", kernelBound=" + Arrays.toString(kernelBound)
+				+ ", userBound=" + Arrays.toString(userBound) + "]";
+	}
 }
