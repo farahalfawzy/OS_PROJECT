@@ -1,23 +1,15 @@
 package submodules;
 
 import java.io.Serializable;
-import java.util.Arrays;
 
 public class PCB implements Serializable {
 
-
 	private static final long serialVersionUID = 1L;
-	public static int id = 0;
 	private int PID;
-	private PState state;
+	private PState state = PState.NEW;
 	private int PC = 0;
 	private int[] kernelBound = new int[2];
 	private int[] userBound = new int[2];
-
-	public PCB() {
-		this.PID = id++;
-		this.state = PState.NEW;
-	}
 
 	public int getPID() {
 		return PID;
@@ -69,9 +61,15 @@ public class PCB implements Serializable {
 	public void setUserBound(int[] userBound) {
 		this.userBound = userBound;
 	}
+
 	@Override
 	public String toString() {
-		return "PCB [PID=" + PID + ", state=" + state + ", PC=" + PC + ", kernelBound=" + Arrays.toString(kernelBound)
-				+ ", userBound=" + Arrays.toString(userBound) + "]";
+		StringBuffer sb = new StringBuffer();
+		sb.append("Process ID ").append(PID).append("\n");
+		sb.append("State ").append(state).append("\n");
+		sb.append("PC ").append(PC).append("\n");
+		sb.append("Kernel Space Bound ").append("[" + kernelBound[0] + "," + kernelBound[1] + "]").append("\n");
+		sb.append("User Space Bound ").append("[" + userBound[0] + "," + userBound[1] + "]").append("\n");
+		return sb.toString();
 	}
 }

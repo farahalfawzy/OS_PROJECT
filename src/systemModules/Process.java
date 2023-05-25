@@ -13,12 +13,10 @@ public class Process implements Serializable {
 	private Variable variable1 = new Variable();
 	private Variable variable2 = new Variable();
 	private Variable variable3 = new Variable();
-	
+
 	public PCB getPCB() {
 		return PCB;
 	}
-
-	
 
 	public void setPCB(PCB pCB) {
 		PCB = pCB;
@@ -44,33 +42,23 @@ public class Process implements Serializable {
 		this.variable2 = variable2;
 	}
 
-
-
 	public Variable getVariable3() {
 		return variable3;
 	}
-
-
 
 	public void setVariable3(Variable variable3) {
 		this.variable3 = variable3;
 	}
 
-
-
 	@Override
 	public String toString() {
-		String res= "Process [PCB=" + PCB.toString() + "\n, instructions=" ; 
-		for(int i=0;i<instructions.size();i++) {
-			res+=instructions.get(i)+"\n";
+		String res = PCB.toString();
+		for (int i = 0; i < instructions.size(); i++) {
+			res += instructions.get(i) + "\n";
 		}
-		res+="Variables: \n" + variable1 + ","
-				+ variable2 + "," + variable3 + "]";
+		res += variable1 + "\n" + variable2 + "\n" + variable3;
 		return res;
-		
+
 	}
-
-
-
 
 }

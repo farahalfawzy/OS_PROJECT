@@ -10,8 +10,6 @@ public class Memory {
 
 	public void loadProcess(Process process) {
 		if (memory[0] == null) {
-			if (process.getPCB() == null)
-				process.setPCB(new PCB());
 			int currentPc = process.getPCB().getPC();
 			if (currentPc == 0)
 				process.getPCB().setPC(10);
@@ -24,8 +22,6 @@ public class Memory {
 			fillUserMemory(10, process);
 			return;
 		} else if (memory[5] == null) {
-			if (process.getPCB() == null)
-				process.setPCB(new PCB());
 			int currentPc = process.getPCB().getPC();
 			if (currentPc == 0)
 				process.getPCB().setPC(25);
@@ -49,6 +45,8 @@ public class Memory {
 			return;
 		Process process = OS.loadProcess();
 		swapToDisk();
+		System.out.println(
+				"At Time " + OS.getTime() + " Process " + process.getPCB().getPID() + " is Swapped in From Disk.\n");
 		loadProcess(process);
 	}
 
@@ -74,13 +72,17 @@ public class Memory {
 	}
 
 	public void swapToDisk() {
-		if (memory[1].equals(PState.RUNNING) || memory[6].equals(PState.BLOCKED)) {
+		if (memory[1].equals(PState.RUNNING) || memory[6].equals(PState.BLOCKED) || memory[6].equals(PState.FINISHED)) {
 			Process process = rebuildProcess(5, 25);
+			System.out.println(
+					"At Time " + OS.getTime() + " Process " + process.getPCB().getPID() + " is Swapped Out To Disk.\n");
 			OS.unloadProcess(process);
 			clearMemory(5, 9);
 			clearMemory(25, 39);
 		} else {
 			Process process = rebuildProcess(0, 10);
+			System.out.println(
+					"At Time " + OS.getTime() + " Process " + process.getPCB().getPID() + " is Swapped Out To Disk.\n");
 			OS.unloadProcess(process);
 			clearMemory(0, 4);
 			clearMemory(10, 24);
@@ -96,11 +98,12 @@ public class Memory {
 		process.getPCB().setKernelBound((int[]) memory[startKernel++]);
 		process.getPCB().setUserBound((int[]) memory[startKernel]);
 		int temp = startUser;
-		while (startUser < temp + 15)
-			if (memory[startUser++] instanceof Variable)
-				break;
+		while (startUser < temp + 15) {
+			if (!(memory[startUser] instanceof Variable))
+				process.getInstructions().add((String) memory[startUser++]);
 			else
-				process.getInstructions().add((String) memory[startUser]);
+				break;
+		}
 		process.setVariable1((Variable) memory[startUser++]);
 		process.setVariable2((Variable) memory[startUser++]);
 		process.setVariable3((Variable) memory[startUser]);
@@ -125,7 +128,8 @@ public class Memory {
 			return (PState) memory[6];
 		else if (memory[0] != null && memory[0].equals(processId))
 			return (PState) memory[1];
-		return null;
+		else
+			return null;
 	}
 
 	public void setProcessState(int processId, PState state) {
@@ -134,8 +138,6 @@ public class Memory {
 		else if (memory[0] != null && memory[0].equals(processId))
 			memory[1] = state;
 	}
-
-
 
 	public boolean isFinished(int processID) {
 		int PC = -1;
@@ -155,53 +157,96 @@ public class Memory {
 	public Object[] getMemory() {
 		return memory;
 	}
-	//new
-		public String getInstruction(int processID) {
-			int PC = -1;
-			if (memory[0] != null && memory[0].equals(processID)) {
-				PC = (Integer) memory[2];
-				memory[2]=(Integer)memory[2]+1;
-			}
 
-			if (memory[5] != null && memory[5].equals(processID)) {
-				PC = (Integer) memory[7];
-				memory[7]=(Integer)memory[7]+1;
+	// new
+	public String getInstruction(int processID) {
+		int PC = -1;
+		if (memory[0] != null && memory[0].equals(processID)) {
+			PC = (Integer) memory[2];
+			memory[2] = (Integer) memory[2] + 1;
+		}
 
-			}
-			return (String)memory[PC];
+		if (memory[5] != null && memory[5].equals(processID)) {
+			PC = (Integer) memory[7];
+			memory[7] = (Integer) memory[7] + 1;
 
 		}
-		public Object getVariable(int processID,String variable) {
-			if (memory[0] != null && memory[0].equals(processID)) {
-				int endUser=((int[])memory[4])[1]-2;
-				for(int i=0;i<3;i++) {
-					if(((Variable)memory[endUser+i]).getName().equalsIgnoreCase(variable)) {
-						return ((Variable)memory[endUser+i]).getValue();
-					}
-				}
-			}
-			if (memory[5] != null && memory[5].equals(processID)) {
-				int endUser=((int[])memory[9])[1]-2;
-				for(int i=0;i<3;i++) {
-					if(((Variable)memory[endUser+i]).getName().equalsIgnoreCase(variable)) {
-						return ((Variable)memory[endUser+i]).getValue();
-					}
-				}
-			}
-			return null;
+		return (String) memory[PC];
+
+	}
+
+	public Object getVariable(int processID, String variable) {
+		int startUser = 0;
+		int endUser = 0;
+		if (memory[0] != null && memory[0].equals(processID)) {
+			startUser = ((int[]) memory[4])[0];
+			endUser = ((int[]) memory[4])[1];
+		} else {
+			startUser = ((int[]) memory[9])[0];
+			endUser = ((int[]) memory[9])[1];
 		}
-		public void setVariable(int processID, Variable variable){
-			int endUser=0;
-			if (memory[0] != null && memory[0].equals(processID)) 
-				 endUser=((int[])memory[4])[1]-2;
+		for (int i = startUser; i <= endUser; i++)
+			if (memory[i] instanceof Variable && ((Variable) memory[i]).getName() != null
+					&& ((Variable) memory[i]).getName().equalsIgnoreCase(variable))
+				return ((Variable) memory[i]).getValue();
+		return null;
+
+	}
+
+	public void setVariable(int processID, Variable variable) {
+		int startUser = 0;
+		int endUser = 0;
+		if (memory[0] != null && memory[0].equals(processID)) {
+			startUser = ((int[]) memory[4])[0];
+			endUser = ((int[]) memory[4])[1];
+		} else {
+			startUser = ((int[]) memory[9])[0];
+			endUser = ((int[]) memory[9])[1];
+		}
+		for (int i = startUser; i <= endUser; i++) {
+			if (memory[i] instanceof Variable && ((Variable) memory[i]).getName() == null) {
+				memory[i] = variable;
+				return;
+			}
+		}
+	}
+
+	public String toString() {
+		StringBuffer sb = new StringBuffer();
+		String[] printHelp = { "Process ID", "State", "PC", "Kernel Space Bound", "User Space Bound" };
+		sb.append("At Time " + OS.getTime() + " Memory:\n").append("\n");
+		sb.append("Keranl Space:").append("\n");
+		for (int i = 0; i < 10; i++) {
+			if (memory[i] == null)
+				sb.append("Cell " + i + ": Empty").append("\n");
+			else if (i < 5)
+				sb.append("Cell " + i + ": " + printHelp[i] + " " + toStringHelper(memory[i])).append("\n");
 			else
-				 endUser=((int[])memory[9])[1]-2;
-			for(int i=0;i<3;i++) {
-				if(memory[endUser+i]==null) {
-					memory[endUser+i]=variable;
-					return;
-				}
-			}
-
+				sb.append("Cell " + i + ": " + printHelp[i - 5] + " " + toStringHelper(memory[i])).append("\n");
 		}
+		sb.append("User Space:").append("\n");
+		for (int i = 10; i < 40; i++) {
+			if (memory[i] == null)
+				sb.append("Cell " + i + ": Empty").append("\n");
+			else if (!(memory[i] instanceof Variable))
+				sb.append("Cell " + i + ": Instruction " + toStringHelper(memory[i])).append("\n");
+			else if (memory[i].toString().equals(""))
+				sb.append("Cell " + i + ": Empty").append("\n");
+			else
+				sb.append("Cell " + i + ": " + toStringHelper(memory[i])).append("\n");
+		}
+		return sb.toString();
+
+	}
+
+	private String toStringHelper(Object o) {
+		if (o instanceof int[]) {
+			int[] bounds = (int[]) o;
+			int min = bounds[0];
+			int max = bounds[1];
+			return "[" + min + "," + max + "]";
+		} else
+			return o.toString();
+
+	}
 }
