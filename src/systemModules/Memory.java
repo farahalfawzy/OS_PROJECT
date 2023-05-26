@@ -204,6 +204,13 @@ public class Memory {
 			endUser = ((int[]) memory[9])[1];
 		}
 		for (int i = startUser; i <= endUser; i++) {
+			if (memory[i] instanceof Variable && ((Variable) memory[i]).getName() != null
+					&& ((Variable) memory[i]).getName().equals(variable.getName())) {
+				memory[i] = variable;
+				return;
+			}
+		}
+		for (int i = startUser; i <= endUser; i++) {
 			if (memory[i] instanceof Variable && ((Variable) memory[i]).getName() == null) {
 				memory[i] = variable;
 				return;
