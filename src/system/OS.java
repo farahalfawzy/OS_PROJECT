@@ -29,7 +29,7 @@ public class OS {
 	private static Mutex userInput = new Mutex(1);
 	private static Mutex userOutput = new Mutex(1);
 	private static Mutex file = new Mutex(1);
-	private static Hashtable<Integer, Object> temp= new Hashtable<Integer, Object>();
+	private static Hashtable<Integer, Object> temp = new Hashtable<Integer, Object>();
 //	private static Object[] temp = new Object[3];
 	static StringBuffer prints = new StringBuffer();
 
@@ -88,32 +88,41 @@ public class OS {
 
 	public void runInterpreter(int timeSlice, int[] programOrder, int[] arrival) {
 		int finished = 0;
-		int arrived = 0;
+		// int arrived = 0;
 		Interpreter interpreter = new Interpreter();
 		scheduler.setMaxSlice(timeSlice);
 		while (finished < programOrder.length) {
 			// load arrived
-			if (arrived < arrival.length && time == arrival[arrived]) {
-				systemModules.Process process = interpreter.readProgram(programOrder[arrived++]);
-				memory.loadProcess(process);
-				int processId = process.getPCB().getPID();
-				readyQueue.add(processId);
+//			if (arrived < arrival.length && time == arrival[arrived]) {
+//				systemModules.Process process = interpreter.readProgram(programOrder[arrived++]);
+//				memory.loadProcess(process);
+//				int processId = process.getPCB().getPID();
+//				readyQueue.add(processId);
+//			}
+			for (int i = 0; i < arrival.length; i++) {
+				if (arrival[i] == time) {
+					systemModules.Process process = interpreter.readProgram(programOrder[i]);
+					memory.loadProcess(process);
+					int processId = process.getPCB().getPID();
+					readyQueue.add(processId);
+				}
 			}
+			if (runningProcess != -1 && scheduler.sliceFinished())
+				scheduler.preempt();
+			System.out.println("At Time " + time + ":");
+			System.out.println("Ready Queue : " + readyQueue);
+			System.out.println("Blocked Queue : " + blockedQueue + "\n");
+			prints.append("At Time " + time + ":\n");
+			prints.append("Ready Queue : " + readyQueue + "\n");
+			prints.append("Blocked Queue : " + blockedQueue + "\n");
 			// dispatch a process
 			if (runningProcess == -1 && !readyQueue.isEmpty()) {
 				scheduler.dispatch();
 				printDispatched();
 			}
-			else {
-				System.out.println("Ready Queue : " + readyQueue);
-				System.out.println("Blocked Queue : " + blockedQueue + ".\n");
-				prints.append("Ready Queue : " + readyQueue + "\n");
-				prints.append("Blocked Queue : " + blockedQueue + "\n");
-			}
 			// execute the process quantum and set running process to -1 if blocked or
 			// finished
 			if (runningProcess != -1) {
-				
 				System.out.println("At Time " + time + ": Process " + runningProcess + " is currently executing.\n");
 				prints.append("At Time " + time + ": Process " + runningProcess + " is currently executing.\n");
 				scheduler.decrementRunSlice();
@@ -130,10 +139,8 @@ public class OS {
 					finished++;
 					printFinished();
 					setRunningProcess(-1);
-				} else if (scheduler.sliceFinished())
-					scheduler.preempt();
+				}
 			} else {
-				
 				System.out.println("At Time " + time + ": No Process is currently executing.\n");
 				prints.append("At Time " + time + ": No Process is currently executing.\n");
 			}
@@ -145,9 +152,9 @@ public class OS {
 	}
 
 	private void printFinished() {
-		System.out.println("Process " + runningProcess + " finished.");
+		System.out.println("At Time " + time + ": Process " + runningProcess + " finished.");
 		System.out.println("Ready Queue : " + readyQueue);
-		System.out.println("Blocked Queue : " + blockedQueue + ".\n");
+		System.out.println("Blocked Queue : " + blockedQueue + "\n");
 		prints.append("Process " + runningProcess + " finished.\n");
 		prints.append("Ready Queue : " + readyQueue + "\n");
 		prints.append("Blocked Queue : " + blockedQueue + "\n");
@@ -155,18 +162,18 @@ public class OS {
 	}
 
 	private void printBlocked() {
-		System.out.println("Process " + runningProcess + " blocked.");
+		System.out.println("At Time " + time + ": Process " + runningProcess + " blocked.");
 		System.out.println("Ready Queue : " + readyQueue);
 		System.out.println("Blocked Queue : " + blockedQueue + ".\n");
-		prints.append("Process " + runningProcess + " blocked.\n");
+		prints.append("Process " + runningProcess + " blocked\n");
 		prints.append("Ready Queue : " + readyQueue + "\n");
 		prints.append("Blocked Queue : " + blockedQueue + "\n");
 	}
 
 	private void printDispatched() {
-		System.out.println("Process " + runningProcess + " Dispatched.");
+		System.out.println("At Time " + time + ": Process " + runningProcess + " Dispatched.");
 		System.out.println("Ready Queue : " + readyQueue);
-		System.out.println("Blocked Queue : " + blockedQueue + ".\n");
+		System.out.println("Blocked Queue : " + blockedQueue + "\n");
 		prints.append("Process " + runningProcess + " Dispatched.\n");
 		prints.append("Ready Queue : " + readyQueue + "\n");
 		prints.append("Blocked Queue : " + blockedQueue + "\n");
@@ -272,5 +279,4 @@ public class OS {
 		return temp;
 	}
 
-	
 }
