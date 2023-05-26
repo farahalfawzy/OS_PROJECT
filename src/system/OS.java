@@ -104,9 +104,16 @@ public class OS {
 				scheduler.dispatch();
 				printDispatched();
 			}
+			else {
+				System.out.println("Ready Queue : " + readyQueue);
+				System.out.println("Blocked Queue : " + blockedQueue + ".\n");
+				prints.append("Ready Queue : " + readyQueue + "\n");
+				prints.append("Blocked Queue : " + blockedQueue + "\n");
+			}
 			// execute the process quantum and set running process to -1 if blocked or
 			// finished
 			if (runningProcess != -1) {
+				
 				System.out.println("At Time " + time + ": Process " + runningProcess + " is currently executing.\n");
 				prints.append("At Time " + time + ": Process " + runningProcess + " is currently executing.\n");
 				scheduler.decrementRunSlice();
@@ -126,6 +133,7 @@ public class OS {
 				} else if (scheduler.sliceFinished())
 					scheduler.preempt();
 			} else {
+				
 				System.out.println("At Time " + time + ": No Process is currently executing.\n");
 				prints.append("At Time " + time + ": No Process is currently executing.\n");
 			}

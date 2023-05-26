@@ -1,0 +1,16 @@
+Process ID 1
+State FINISHED
+PC 19
+Kernel Space Bound [0,4]
+User Space Bound [10,24]
+semWait userInput
+input
+assign a input
+input
+assign b input
+semSignal userInput
+semWait userOutput
+printFromTo a b
+semSignal userOutput
+Variable [name=a, Value=2]
+Variable [name=b, Value=5]

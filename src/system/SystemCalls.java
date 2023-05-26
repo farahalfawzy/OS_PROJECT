@@ -16,7 +16,7 @@ public class SystemCalls {
 	public static Object takeInput() {
 		Scanner sc = new Scanner(System.in);
 		String input = sc.nextLine();
-		sc.close();
+		//sc.close();
 		return input;
 	}
 
@@ -28,7 +28,7 @@ public class SystemCalls {
 			myReader.close();
 			return s;
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		return "";
 	}
