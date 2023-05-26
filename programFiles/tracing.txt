@@ -1,0 +1,1931 @@
+At Time 0:
+Ready Queue : [1]
+Blocked Queue : []
+Process 1 Dispatched.
+Ready Queue : []
+Blocked Queue : []
+At Time 0: Process 1 is currently executing.
+At Time 0: Instruction semWait userInput From Process 1 is currently executing.
+At Time 0 Memory:
+
+Keranl Space:
+Cell 0: Process ID 1
+Cell 1: State RUNNING
+Cell 2: PC 11
+Cell 3: Kernel Space Bound [0,4]
+Cell 4: User Space Bound [10,24]
+Cell 5: Empty
+Cell 6: Empty
+Cell 7: Empty
+Cell 8: Empty
+Cell 9: Empty
+User Space:
+Cell 10: Instruction semWait userInput
+Cell 11: Instruction input
+Cell 12: Instruction assign a input
+Cell 13: Instruction input
+Cell 14: Instruction assign b input
+Cell 15: Instruction semSignal userInput
+Cell 16: Instruction semWait userOutput
+Cell 17: Instruction printFromTo a b
+Cell 18: Instruction semSignal userOutput
+Cell 19: Empty
+Cell 20: Empty
+Cell 21: Empty
+Cell 22: Empty
+Cell 23: Empty
+Cell 24: Empty
+Cell 25: Empty
+Cell 26: Empty
+Cell 27: Empty
+Cell 28: Empty
+Cell 29: Empty
+Cell 30: Empty
+Cell 31: Empty
+Cell 32: Empty
+Cell 33: Empty
+Cell 34: Empty
+Cell 35: Empty
+Cell 36: Empty
+Cell 37: Empty
+Cell 38: Empty
+Cell 39: Empty
+At Time 0 No Processes Swapped Out On Disk. 
+At Time 1:
+Ready Queue : [2]
+Blocked Queue : []
+At Time 1: Process 1 is currently executing.
+At Time 1: Instruction input From Process 1 is currently executing.
+At Time 1 Memory:
+
+Keranl Space:
+Cell 0: Process ID 1
+Cell 1: State RUNNING
+Cell 2: PC 12
+Cell 3: Kernel Space Bound [0,4]
+Cell 4: User Space Bound [10,24]
+Cell 5: Process ID 2
+Cell 6: State READY
+Cell 7: PC 25
+Cell 8: Kernel Space Bound [5,10]
+Cell 9: User Space Bound [25,39]
+User Space:
+Cell 10: Instruction semWait userInput
+Cell 11: Instruction input
+Cell 12: Instruction assign a input
+Cell 13: Instruction input
+Cell 14: Instruction assign b input
+Cell 15: Instruction semSignal userInput
+Cell 16: Instruction semWait userOutput
+Cell 17: Instruction printFromTo a b
+Cell 18: Instruction semSignal userOutput
+Cell 19: Empty
+Cell 20: Empty
+Cell 21: Empty
+Cell 22: Empty
+Cell 23: Empty
+Cell 24: Empty
+Cell 25: Instruction semWait userInput
+Cell 26: Instruction input
+Cell 27: Instruction assign a input
+Cell 28: Instruction input
+Cell 29: Instruction assign b input
+Cell 30: Instruction semSignal userInput
+Cell 31: Instruction semWait file
+Cell 32: Instruction writeFile a b
+Cell 33: Instruction semSignal file
+Cell 34: Empty
+Cell 35: Empty
+Cell 36: Empty
+Cell 37: Empty
+Cell 38: Empty
+Cell 39: Empty
+At Time 1 No Processes Swapped Out On Disk. 
+At Time 2:
+Ready Queue : [2, 1]
+Blocked Queue : []
+Process 2 Dispatched.
+Ready Queue : [1]
+Blocked Queue : []
+At Time 2: Process 2 is currently executing.
+At Time 2: Instruction semWait userInput From Process 2 is currently executing.
+Process 2 blocked
+Ready Queue : [1]
+Blocked Queue : [2]
+At Time 2 Memory:
+
+Keranl Space:
+Cell 0: Process ID 1
+Cell 1: State READY
+Cell 2: PC 12
+Cell 3: Kernel Space Bound [0,4]
+Cell 4: User Space Bound [10,24]
+Cell 5: Process ID 2
+Cell 6: State BLOCKED
+Cell 7: PC 26
+Cell 8: Kernel Space Bound [5,10]
+Cell 9: User Space Bound [25,39]
+User Space:
+Cell 10: Instruction semWait userInput
+Cell 11: Instruction input
+Cell 12: Instruction assign a input
+Cell 13: Instruction input
+Cell 14: Instruction assign b input
+Cell 15: Instruction semSignal userInput
+Cell 16: Instruction semWait userOutput
+Cell 17: Instruction printFromTo a b
+Cell 18: Instruction semSignal userOutput
+Cell 19: Empty
+Cell 20: Empty
+Cell 21: Empty
+Cell 22: Empty
+Cell 23: Empty
+Cell 24: Empty
+Cell 25: Instruction semWait userInput
+Cell 26: Instruction input
+Cell 27: Instruction assign a input
+Cell 28: Instruction input
+Cell 29: Instruction assign b input
+Cell 30: Instruction semSignal userInput
+Cell 31: Instruction semWait file
+Cell 32: Instruction writeFile a b
+Cell 33: Instruction semSignal file
+Cell 34: Empty
+Cell 35: Empty
+Cell 36: Empty
+Cell 37: Empty
+Cell 38: Empty
+Cell 39: Empty
+At Time 2 No Processes Swapped Out On Disk. 
+At Time 3:
+Ready Queue : [1]
+Blocked Queue : [2]
+Process 1 Dispatched.
+Ready Queue : []
+Blocked Queue : [2]
+At Time 3: Process 1 is currently executing.
+At Time 3: Instruction assign a input From Process 1 is currently executing.
+At Time 3 Memory:
+
+Keranl Space:
+Cell 0: Process ID 1
+Cell 1: State RUNNING
+Cell 2: PC 13
+Cell 3: Kernel Space Bound [0,4]
+Cell 4: User Space Bound [10,24]
+Cell 5: Process ID 2
+Cell 6: State BLOCKED
+Cell 7: PC 26
+Cell 8: Kernel Space Bound [5,10]
+Cell 9: User Space Bound [25,39]
+User Space:
+Cell 10: Instruction semWait userInput
+Cell 11: Instruction input
+Cell 12: Instruction assign a input
+Cell 13: Instruction input
+Cell 14: Instruction assign b input
+Cell 15: Instruction semSignal userInput
+Cell 16: Instruction semWait userOutput
+Cell 17: Instruction printFromTo a b
+Cell 18: Instruction semSignal userOutput
+Cell 19: Variable [name=a, Value=4]
+Cell 20: Empty
+Cell 21: Empty
+Cell 22: Empty
+Cell 23: Empty
+Cell 24: Empty
+Cell 25: Instruction semWait userInput
+Cell 26: Instruction input
+Cell 27: Instruction assign a input
+Cell 28: Instruction input
+Cell 29: Instruction assign b input
+Cell 30: Instruction semSignal userInput
+Cell 31: Instruction semWait file
+Cell 32: Instruction writeFile a b
+Cell 33: Instruction semSignal file
+Cell 34: Empty
+Cell 35: Empty
+Cell 36: Empty
+Cell 37: Empty
+Cell 38: Empty
+Cell 39: Empty
+At Time 3 No Processes Swapped Out On Disk. 
+At Time 4:
+Ready Queue : [3]
+Blocked Queue : [2]
+At Time 4: Process 1 is currently executing.
+At Time 4: Instruction input From Process 1 is currently executing.
+At Time 4 Memory:
+
+Keranl Space:
+Cell 0: Process ID 1
+Cell 1: State RUNNING
+Cell 2: PC 14
+Cell 3: Kernel Space Bound [0,4]
+Cell 4: User Space Bound [10,24]
+Cell 5: Process ID 3
+Cell 6: State READY
+Cell 7: PC 25
+Cell 8: Kernel Space Bound [5,10]
+Cell 9: User Space Bound [25,39]
+User Space:
+Cell 10: Instruction semWait userInput
+Cell 11: Instruction input
+Cell 12: Instruction assign a input
+Cell 13: Instruction input
+Cell 14: Instruction assign b input
+Cell 15: Instruction semSignal userInput
+Cell 16: Instruction semWait userOutput
+Cell 17: Instruction printFromTo a b
+Cell 18: Instruction semSignal userOutput
+Cell 19: Variable [name=a, Value=4]
+Cell 20: Empty
+Cell 21: Empty
+Cell 22: Empty
+Cell 23: Empty
+Cell 24: Empty
+Cell 25: Instruction semWait userInput
+Cell 26: Instruction input
+Cell 27: Instruction assign a input
+Cell 28: Instruction semSignal userInput
+Cell 29: Instruction semWait file
+Cell 30: Instruction readFile a
+Cell 31: Instruction assign b readFile
+Cell 32: Instruction semSignal file
+Cell 33: Instruction semWait userOutput
+Cell 34: Instruction print b
+Cell 35: Instruction semSignal userOutput
+Cell 36: Empty
+Cell 37: Empty
+Cell 38: Empty
+Cell 39: Empty
+At Time 4 Disk Contains :
+Process ID 2
+State BLOCKED
+PC 26
+Kernel Space Bound [5,10]
+User Space Bound [25,39]
+semWait userInput
+input
+assign a input
+input
+assign b input
+semSignal userInput
+semWait file
+writeFile a b
+semSignal file
+
+
+At Time 5:
+Ready Queue : [3, 1]
+Blocked Queue : [2]
+Process 3 Dispatched.
+Ready Queue : [1]
+Blocked Queue : [2]
+At Time 5: Process 3 is currently executing.
+At Time 5: Instruction semWait userInput From Process 3 is currently executing.
+Process 3 blocked
+Ready Queue : [1]
+Blocked Queue : [2, 3]
+At Time 5 Memory:
+
+Keranl Space:
+Cell 0: Process ID 1
+Cell 1: State READY
+Cell 2: PC 14
+Cell 3: Kernel Space Bound [0,4]
+Cell 4: User Space Bound [10,24]
+Cell 5: Process ID 3
+Cell 6: State BLOCKED
+Cell 7: PC 26
+Cell 8: Kernel Space Bound [5,10]
+Cell 9: User Space Bound [25,39]
+User Space:
+Cell 10: Instruction semWait userInput
+Cell 11: Instruction input
+Cell 12: Instruction assign a input
+Cell 13: Instruction input
+Cell 14: Instruction assign b input
+Cell 15: Instruction semSignal userInput
+Cell 16: Instruction semWait userOutput
+Cell 17: Instruction printFromTo a b
+Cell 18: Instruction semSignal userOutput
+Cell 19: Variable [name=a, Value=4]
+Cell 20: Empty
+Cell 21: Empty
+Cell 22: Empty
+Cell 23: Empty
+Cell 24: Empty
+Cell 25: Instruction semWait userInput
+Cell 26: Instruction input
+Cell 27: Instruction assign a input
+Cell 28: Instruction semSignal userInput
+Cell 29: Instruction semWait file
+Cell 30: Instruction readFile a
+Cell 31: Instruction assign b readFile
+Cell 32: Instruction semSignal file
+Cell 33: Instruction semWait userOutput
+Cell 34: Instruction print b
+Cell 35: Instruction semSignal userOutput
+Cell 36: Empty
+Cell 37: Empty
+Cell 38: Empty
+Cell 39: Empty
+At Time 5 Disk Contains :
+Process ID 2
+State BLOCKED
+PC 26
+Kernel Space Bound [5,10]
+User Space Bound [25,39]
+semWait userInput
+input
+assign a input
+input
+assign b input
+semSignal userInput
+semWait file
+writeFile a b
+semSignal file
+
+
+At Time 6:
+Ready Queue : [1]
+Blocked Queue : [2, 3]
+Process 1 Dispatched.
+Ready Queue : []
+Blocked Queue : [2, 3]
+At Time 6: Process 1 is currently executing.
+At Time 6: Instruction assign b input From Process 1 is currently executing.
+At Time 6 Memory:
+
+Keranl Space:
+Cell 0: Process ID 1
+Cell 1: State RUNNING
+Cell 2: PC 15
+Cell 3: Kernel Space Bound [0,4]
+Cell 4: User Space Bound [10,24]
+Cell 5: Process ID 3
+Cell 6: State BLOCKED
+Cell 7: PC 26
+Cell 8: Kernel Space Bound [5,10]
+Cell 9: User Space Bound [25,39]
+User Space:
+Cell 10: Instruction semWait userInput
+Cell 11: Instruction input
+Cell 12: Instruction assign a input
+Cell 13: Instruction input
+Cell 14: Instruction assign b input
+Cell 15: Instruction semSignal userInput
+Cell 16: Instruction semWait userOutput
+Cell 17: Instruction printFromTo a b
+Cell 18: Instruction semSignal userOutput
+Cell 19: Variable [name=a, Value=4]
+Cell 20: Variable [name=b, Value=7]
+Cell 21: Empty
+Cell 22: Empty
+Cell 23: Empty
+Cell 24: Empty
+Cell 25: Instruction semWait userInput
+Cell 26: Instruction input
+Cell 27: Instruction assign a input
+Cell 28: Instruction semSignal userInput
+Cell 29: Instruction semWait file
+Cell 30: Instruction readFile a
+Cell 31: Instruction assign b readFile
+Cell 32: Instruction semSignal file
+Cell 33: Instruction semWait userOutput
+Cell 34: Instruction print b
+Cell 35: Instruction semSignal userOutput
+Cell 36: Empty
+Cell 37: Empty
+Cell 38: Empty
+Cell 39: Empty
+At Time 6 Disk Contains :
+Process ID 2
+State BLOCKED
+PC 26
+Kernel Space Bound [5,10]
+User Space Bound [25,39]
+semWait userInput
+input
+assign a input
+input
+assign b input
+semSignal userInput
+semWait file
+writeFile a b
+semSignal file
+
+
+At Time 7:
+Ready Queue : []
+Blocked Queue : [2, 3]
+At Time 7: Process 1 is currently executing.
+At Time 7: Instruction semSignal userInput From Process 1 is currently executing.
+At Time 7 Memory:
+
+Keranl Space:
+Cell 0: Process ID 1
+Cell 1: State RUNNING
+Cell 2: PC 16
+Cell 3: Kernel Space Bound [0,4]
+Cell 4: User Space Bound [10,24]
+Cell 5: Process ID 3
+Cell 6: State BLOCKED
+Cell 7: PC 26
+Cell 8: Kernel Space Bound [5,10]
+Cell 9: User Space Bound [25,39]
+User Space:
+Cell 10: Instruction semWait userInput
+Cell 11: Instruction input
+Cell 12: Instruction assign a input
+Cell 13: Instruction input
+Cell 14: Instruction assign b input
+Cell 15: Instruction semSignal userInput
+Cell 16: Instruction semWait userOutput
+Cell 17: Instruction printFromTo a b
+Cell 18: Instruction semSignal userOutput
+Cell 19: Variable [name=a, Value=4]
+Cell 20: Variable [name=b, Value=7]
+Cell 21: Empty
+Cell 22: Empty
+Cell 23: Empty
+Cell 24: Empty
+Cell 25: Instruction semWait userInput
+Cell 26: Instruction input
+Cell 27: Instruction assign a input
+Cell 28: Instruction semSignal userInput
+Cell 29: Instruction semWait file
+Cell 30: Instruction readFile a
+Cell 31: Instruction assign b readFile
+Cell 32: Instruction semSignal file
+Cell 33: Instruction semWait userOutput
+Cell 34: Instruction print b
+Cell 35: Instruction semSignal userOutput
+Cell 36: Empty
+Cell 37: Empty
+Cell 38: Empty
+Cell 39: Empty
+At Time 7 Disk Contains :
+Process ID 2
+State BLOCKED
+PC 26
+Kernel Space Bound [5,10]
+User Space Bound [25,39]
+semWait userInput
+input
+assign a input
+input
+assign b input
+semSignal userInput
+semWait file
+writeFile a b
+semSignal file
+
+
+At Time 8:
+Ready Queue : [2, 1]
+Blocked Queue : [3]
+Process 2 Dispatched.
+Ready Queue : [1]
+Blocked Queue : [3]
+At Time 8: Process 2 is currently executing.
+At Time 8: Instruction input From Process 2 is currently executing.
+At Time 8 Memory:
+
+Keranl Space:
+Cell 0: Process ID 1
+Cell 1: State READY
+Cell 2: PC 16
+Cell 3: Kernel Space Bound [0,4]
+Cell 4: User Space Bound [10,24]
+Cell 5: Process ID 2
+Cell 6: State RUNNING
+Cell 7: PC 27
+Cell 8: Kernel Space Bound [5,10]
+Cell 9: User Space Bound [25,39]
+User Space:
+Cell 10: Instruction semWait userInput
+Cell 11: Instruction input
+Cell 12: Instruction assign a input
+Cell 13: Instruction input
+Cell 14: Instruction assign b input
+Cell 15: Instruction semSignal userInput
+Cell 16: Instruction semWait userOutput
+Cell 17: Instruction printFromTo a b
+Cell 18: Instruction semSignal userOutput
+Cell 19: Variable [name=a, Value=4]
+Cell 20: Variable [name=b, Value=7]
+Cell 21: Empty
+Cell 22: Empty
+Cell 23: Empty
+Cell 24: Empty
+Cell 25: Instruction semWait userInput
+Cell 26: Instruction input
+Cell 27: Instruction assign a input
+Cell 28: Instruction input
+Cell 29: Instruction assign b input
+Cell 30: Instruction semSignal userInput
+Cell 31: Instruction semWait file
+Cell 32: Instruction writeFile a b
+Cell 33: Instruction semSignal file
+Cell 34: Empty
+Cell 35: Empty
+Cell 36: Empty
+Cell 37: Empty
+Cell 38: Empty
+Cell 39: Empty
+At Time 8 Disk Contains :
+Process ID 3
+State BLOCKED
+PC 26
+Kernel Space Bound [5,10]
+User Space Bound [25,39]
+semWait userInput
+input
+assign a input
+semSignal userInput
+semWait file
+readFile a
+assign b readFile
+semSignal file
+semWait userOutput
+print b
+semSignal userOutput
+
+
+At Time 9:
+Ready Queue : [1]
+Blocked Queue : [3]
+At Time 9: Process 2 is currently executing.
+At Time 9: Instruction assign a input From Process 2 is currently executing.
+At Time 9 Memory:
+
+Keranl Space:
+Cell 0: Process ID 1
+Cell 1: State READY
+Cell 2: PC 16
+Cell 3: Kernel Space Bound [0,4]
+Cell 4: User Space Bound [10,24]
+Cell 5: Process ID 2
+Cell 6: State RUNNING
+Cell 7: PC 28
+Cell 8: Kernel Space Bound [5,10]
+Cell 9: User Space Bound [25,39]
+User Space:
+Cell 10: Instruction semWait userInput
+Cell 11: Instruction input
+Cell 12: Instruction assign a input
+Cell 13: Instruction input
+Cell 14: Instruction assign b input
+Cell 15: Instruction semSignal userInput
+Cell 16: Instruction semWait userOutput
+Cell 17: Instruction printFromTo a b
+Cell 18: Instruction semSignal userOutput
+Cell 19: Variable [name=a, Value=4]
+Cell 20: Variable [name=b, Value=7]
+Cell 21: Empty
+Cell 22: Empty
+Cell 23: Empty
+Cell 24: Empty
+Cell 25: Instruction semWait userInput
+Cell 26: Instruction input
+Cell 27: Instruction assign a input
+Cell 28: Instruction input
+Cell 29: Instruction assign b input
+Cell 30: Instruction semSignal userInput
+Cell 31: Instruction semWait file
+Cell 32: Instruction writeFile a b
+Cell 33: Instruction semSignal file
+Cell 34: Variable [name=a, Value=hello]
+Cell 35: Empty
+Cell 36: Empty
+Cell 37: Empty
+Cell 38: Empty
+Cell 39: Empty
+At Time 9 Disk Contains :
+Process ID 3
+State BLOCKED
+PC 26
+Kernel Space Bound [5,10]
+User Space Bound [25,39]
+semWait userInput
+input
+assign a input
+semSignal userInput
+semWait file
+readFile a
+assign b readFile
+semSignal file
+semWait userOutput
+print b
+semSignal userOutput
+
+
+At Time 10:
+Ready Queue : [1, 2]
+Blocked Queue : [3]
+Process 1 Dispatched.
+Ready Queue : [2]
+Blocked Queue : [3]
+At Time 10: Process 1 is currently executing.
+At Time 10: Instruction semWait userOutput From Process 1 is currently executing.
+At Time 10 Memory:
+
+Keranl Space:
+Cell 0: Process ID 1
+Cell 1: State RUNNING
+Cell 2: PC 17
+Cell 3: Kernel Space Bound [0,4]
+Cell 4: User Space Bound [10,24]
+Cell 5: Process ID 2
+Cell 6: State READY
+Cell 7: PC 28
+Cell 8: Kernel Space Bound [5,10]
+Cell 9: User Space Bound [25,39]
+User Space:
+Cell 10: Instruction semWait userInput
+Cell 11: Instruction input
+Cell 12: Instruction assign a input
+Cell 13: Instruction input
+Cell 14: Instruction assign b input
+Cell 15: Instruction semSignal userInput
+Cell 16: Instruction semWait userOutput
+Cell 17: Instruction printFromTo a b
+Cell 18: Instruction semSignal userOutput
+Cell 19: Variable [name=a, Value=4]
+Cell 20: Variable [name=b, Value=7]
+Cell 21: Empty
+Cell 22: Empty
+Cell 23: Empty
+Cell 24: Empty
+Cell 25: Instruction semWait userInput
+Cell 26: Instruction input
+Cell 27: Instruction assign a input
+Cell 28: Instruction input
+Cell 29: Instruction assign b input
+Cell 30: Instruction semSignal userInput
+Cell 31: Instruction semWait file
+Cell 32: Instruction writeFile a b
+Cell 33: Instruction semSignal file
+Cell 34: Variable [name=a, Value=hello]
+Cell 35: Empty
+Cell 36: Empty
+Cell 37: Empty
+Cell 38: Empty
+Cell 39: Empty
+At Time 10 Disk Contains :
+Process ID 3
+State BLOCKED
+PC 26
+Kernel Space Bound [5,10]
+User Space Bound [25,39]
+semWait userInput
+input
+assign a input
+semSignal userInput
+semWait file
+readFile a
+assign b readFile
+semSignal file
+semWait userOutput
+print b
+semSignal userOutput
+
+
+At Time 11:
+Ready Queue : [2]
+Blocked Queue : [3]
+At Time 11: Process 1 is currently executing.
+At Time 11: Instruction printFromTo a b From Process 1 is currently executing.
+At Time 11 Memory:
+
+Keranl Space:
+Cell 0: Process ID 1
+Cell 1: State RUNNING
+Cell 2: PC 18
+Cell 3: Kernel Space Bound [0,4]
+Cell 4: User Space Bound [10,24]
+Cell 5: Process ID 2
+Cell 6: State READY
+Cell 7: PC 28
+Cell 8: Kernel Space Bound [5,10]
+Cell 9: User Space Bound [25,39]
+User Space:
+Cell 10: Instruction semWait userInput
+Cell 11: Instruction input
+Cell 12: Instruction assign a input
+Cell 13: Instruction input
+Cell 14: Instruction assign b input
+Cell 15: Instruction semSignal userInput
+Cell 16: Instruction semWait userOutput
+Cell 17: Instruction printFromTo a b
+Cell 18: Instruction semSignal userOutput
+Cell 19: Variable [name=a, Value=4]
+Cell 20: Variable [name=b, Value=7]
+Cell 21: Empty
+Cell 22: Empty
+Cell 23: Empty
+Cell 24: Empty
+Cell 25: Instruction semWait userInput
+Cell 26: Instruction input
+Cell 27: Instruction assign a input
+Cell 28: Instruction input
+Cell 29: Instruction assign b input
+Cell 30: Instruction semSignal userInput
+Cell 31: Instruction semWait file
+Cell 32: Instruction writeFile a b
+Cell 33: Instruction semSignal file
+Cell 34: Variable [name=a, Value=hello]
+Cell 35: Empty
+Cell 36: Empty
+Cell 37: Empty
+Cell 38: Empty
+Cell 39: Empty
+At Time 11 Disk Contains :
+Process ID 3
+State BLOCKED
+PC 26
+Kernel Space Bound [5,10]
+User Space Bound [25,39]
+semWait userInput
+input
+assign a input
+semSignal userInput
+semWait file
+readFile a
+assign b readFile
+semSignal file
+semWait userOutput
+print b
+semSignal userOutput
+
+
+At Time 12:
+Ready Queue : [2, 1]
+Blocked Queue : [3]
+Process 2 Dispatched.
+Ready Queue : [1]
+Blocked Queue : [3]
+At Time 12: Process 2 is currently executing.
+At Time 12: Instruction input From Process 2 is currently executing.
+At Time 12 Memory:
+
+Keranl Space:
+Cell 0: Process ID 1
+Cell 1: State READY
+Cell 2: PC 18
+Cell 3: Kernel Space Bound [0,4]
+Cell 4: User Space Bound [10,24]
+Cell 5: Process ID 2
+Cell 6: State RUNNING
+Cell 7: PC 29
+Cell 8: Kernel Space Bound [5,10]
+Cell 9: User Space Bound [25,39]
+User Space:
+Cell 10: Instruction semWait userInput
+Cell 11: Instruction input
+Cell 12: Instruction assign a input
+Cell 13: Instruction input
+Cell 14: Instruction assign b input
+Cell 15: Instruction semSignal userInput
+Cell 16: Instruction semWait userOutput
+Cell 17: Instruction printFromTo a b
+Cell 18: Instruction semSignal userOutput
+Cell 19: Variable [name=a, Value=4]
+Cell 20: Variable [name=b, Value=7]
+Cell 21: Empty
+Cell 22: Empty
+Cell 23: Empty
+Cell 24: Empty
+Cell 25: Instruction semWait userInput
+Cell 26: Instruction input
+Cell 27: Instruction assign a input
+Cell 28: Instruction input
+Cell 29: Instruction assign b input
+Cell 30: Instruction semSignal userInput
+Cell 31: Instruction semWait file
+Cell 32: Instruction writeFile a b
+Cell 33: Instruction semSignal file
+Cell 34: Variable [name=a, Value=hello]
+Cell 35: Empty
+Cell 36: Empty
+Cell 37: Empty
+Cell 38: Empty
+Cell 39: Empty
+At Time 12 Disk Contains :
+Process ID 3
+State BLOCKED
+PC 26
+Kernel Space Bound [5,10]
+User Space Bound [25,39]
+semWait userInput
+input
+assign a input
+semSignal userInput
+semWait file
+readFile a
+assign b readFile
+semSignal file
+semWait userOutput
+print b
+semSignal userOutput
+
+
+At Time 13:
+Ready Queue : [1]
+Blocked Queue : [3]
+At Time 13: Process 2 is currently executing.
+At Time 13: Instruction assign b input From Process 2 is currently executing.
+At Time 13 Memory:
+
+Keranl Space:
+Cell 0: Process ID 1
+Cell 1: State READY
+Cell 2: PC 18
+Cell 3: Kernel Space Bound [0,4]
+Cell 4: User Space Bound [10,24]
+Cell 5: Process ID 2
+Cell 6: State RUNNING
+Cell 7: PC 30
+Cell 8: Kernel Space Bound [5,10]
+Cell 9: User Space Bound [25,39]
+User Space:
+Cell 10: Instruction semWait userInput
+Cell 11: Instruction input
+Cell 12: Instruction assign a input
+Cell 13: Instruction input
+Cell 14: Instruction assign b input
+Cell 15: Instruction semSignal userInput
+Cell 16: Instruction semWait userOutput
+Cell 17: Instruction printFromTo a b
+Cell 18: Instruction semSignal userOutput
+Cell 19: Variable [name=a, Value=4]
+Cell 20: Variable [name=b, Value=7]
+Cell 21: Empty
+Cell 22: Empty
+Cell 23: Empty
+Cell 24: Empty
+Cell 25: Instruction semWait userInput
+Cell 26: Instruction input
+Cell 27: Instruction assign a input
+Cell 28: Instruction input
+Cell 29: Instruction assign b input
+Cell 30: Instruction semSignal userInput
+Cell 31: Instruction semWait file
+Cell 32: Instruction writeFile a b
+Cell 33: Instruction semSignal file
+Cell 34: Variable [name=a, Value=hello]
+Cell 35: Variable [name=b, Value=hi]
+Cell 36: Empty
+Cell 37: Empty
+Cell 38: Empty
+Cell 39: Empty
+At Time 13 Disk Contains :
+Process ID 3
+State BLOCKED
+PC 26
+Kernel Space Bound [5,10]
+User Space Bound [25,39]
+semWait userInput
+input
+assign a input
+semSignal userInput
+semWait file
+readFile a
+assign b readFile
+semSignal file
+semWait userOutput
+print b
+semSignal userOutput
+
+
+At Time 14:
+Ready Queue : [1, 2]
+Blocked Queue : [3]
+Process 1 Dispatched.
+Ready Queue : [2]
+Blocked Queue : [3]
+At Time 14: Process 1 is currently executing.
+At Time 14: Instruction semSignal userOutput From Process 1 is currently executing.
+Process 1 finished.
+Ready Queue : [2]
+Blocked Queue : [3]
+At Time 14 Memory:
+
+Keranl Space:
+Cell 0: Process ID 1
+Cell 1: State FINISHED
+Cell 2: PC 19
+Cell 3: Kernel Space Bound [0,4]
+Cell 4: User Space Bound [10,24]
+Cell 5: Process ID 2
+Cell 6: State READY
+Cell 7: PC 30
+Cell 8: Kernel Space Bound [5,10]
+Cell 9: User Space Bound [25,39]
+User Space:
+Cell 10: Instruction semWait userInput
+Cell 11: Instruction input
+Cell 12: Instruction assign a input
+Cell 13: Instruction input
+Cell 14: Instruction assign b input
+Cell 15: Instruction semSignal userInput
+Cell 16: Instruction semWait userOutput
+Cell 17: Instruction printFromTo a b
+Cell 18: Instruction semSignal userOutput
+Cell 19: Variable [name=a, Value=4]
+Cell 20: Variable [name=b, Value=7]
+Cell 21: Empty
+Cell 22: Empty
+Cell 23: Empty
+Cell 24: Empty
+Cell 25: Instruction semWait userInput
+Cell 26: Instruction input
+Cell 27: Instruction assign a input
+Cell 28: Instruction input
+Cell 29: Instruction assign b input
+Cell 30: Instruction semSignal userInput
+Cell 31: Instruction semWait file
+Cell 32: Instruction writeFile a b
+Cell 33: Instruction semSignal file
+Cell 34: Variable [name=a, Value=hello]
+Cell 35: Variable [name=b, Value=hi]
+Cell 36: Empty
+Cell 37: Empty
+Cell 38: Empty
+Cell 39: Empty
+At Time 14 Disk Contains :
+Process ID 3
+State BLOCKED
+PC 26
+Kernel Space Bound [5,10]
+User Space Bound [25,39]
+semWait userInput
+input
+assign a input
+semSignal userInput
+semWait file
+readFile a
+assign b readFile
+semSignal file
+semWait userOutput
+print b
+semSignal userOutput
+
+
+At Time 15:
+Ready Queue : [2]
+Blocked Queue : [3]
+Process 2 Dispatched.
+Ready Queue : []
+Blocked Queue : [3]
+At Time 15: Process 2 is currently executing.
+At Time 15: Instruction semSignal userInput From Process 2 is currently executing.
+At Time 15 Memory:
+
+Keranl Space:
+Cell 0: Process ID 1
+Cell 1: State FINISHED
+Cell 2: PC 19
+Cell 3: Kernel Space Bound [0,4]
+Cell 4: User Space Bound [10,24]
+Cell 5: Process ID 2
+Cell 6: State RUNNING
+Cell 7: PC 31
+Cell 8: Kernel Space Bound [5,10]
+Cell 9: User Space Bound [25,39]
+User Space:
+Cell 10: Instruction semWait userInput
+Cell 11: Instruction input
+Cell 12: Instruction assign a input
+Cell 13: Instruction input
+Cell 14: Instruction assign b input
+Cell 15: Instruction semSignal userInput
+Cell 16: Instruction semWait userOutput
+Cell 17: Instruction printFromTo a b
+Cell 18: Instruction semSignal userOutput
+Cell 19: Variable [name=a, Value=4]
+Cell 20: Variable [name=b, Value=7]
+Cell 21: Empty
+Cell 22: Empty
+Cell 23: Empty
+Cell 24: Empty
+Cell 25: Instruction semWait userInput
+Cell 26: Instruction input
+Cell 27: Instruction assign a input
+Cell 28: Instruction input
+Cell 29: Instruction assign b input
+Cell 30: Instruction semSignal userInput
+Cell 31: Instruction semWait file
+Cell 32: Instruction writeFile a b
+Cell 33: Instruction semSignal file
+Cell 34: Variable [name=a, Value=hello]
+Cell 35: Variable [name=b, Value=hi]
+Cell 36: Empty
+Cell 37: Empty
+Cell 38: Empty
+Cell 39: Empty
+At Time 15 Disk Contains :
+Process ID 3
+State BLOCKED
+PC 26
+Kernel Space Bound [5,10]
+User Space Bound [25,39]
+semWait userInput
+input
+assign a input
+semSignal userInput
+semWait file
+readFile a
+assign b readFile
+semSignal file
+semWait userOutput
+print b
+semSignal userOutput
+
+
+At Time 16:
+Ready Queue : [3]
+Blocked Queue : []
+At Time 16: Process 2 is currently executing.
+At Time 16: Instruction semWait file From Process 2 is currently executing.
+At Time 16 Memory:
+
+Keranl Space:
+Cell 0: Process ID 1
+Cell 1: State FINISHED
+Cell 2: PC 19
+Cell 3: Kernel Space Bound [0,4]
+Cell 4: User Space Bound [10,24]
+Cell 5: Process ID 2
+Cell 6: State RUNNING
+Cell 7: PC 32
+Cell 8: Kernel Space Bound [5,10]
+Cell 9: User Space Bound [25,39]
+User Space:
+Cell 10: Instruction semWait userInput
+Cell 11: Instruction input
+Cell 12: Instruction assign a input
+Cell 13: Instruction input
+Cell 14: Instruction assign b input
+Cell 15: Instruction semSignal userInput
+Cell 16: Instruction semWait userOutput
+Cell 17: Instruction printFromTo a b
+Cell 18: Instruction semSignal userOutput
+Cell 19: Variable [name=a, Value=4]
+Cell 20: Variable [name=b, Value=7]
+Cell 21: Empty
+Cell 22: Empty
+Cell 23: Empty
+Cell 24: Empty
+Cell 25: Instruction semWait userInput
+Cell 26: Instruction input
+Cell 27: Instruction assign a input
+Cell 28: Instruction input
+Cell 29: Instruction assign b input
+Cell 30: Instruction semSignal userInput
+Cell 31: Instruction semWait file
+Cell 32: Instruction writeFile a b
+Cell 33: Instruction semSignal file
+Cell 34: Variable [name=a, Value=hello]
+Cell 35: Variable [name=b, Value=hi]
+Cell 36: Empty
+Cell 37: Empty
+Cell 38: Empty
+Cell 39: Empty
+At Time 16 Disk Contains :
+Process ID 3
+State BLOCKED
+PC 26
+Kernel Space Bound [5,10]
+User Space Bound [25,39]
+semWait userInput
+input
+assign a input
+semSignal userInput
+semWait file
+readFile a
+assign b readFile
+semSignal file
+semWait userOutput
+print b
+semSignal userOutput
+
+
+At Time 17:
+Ready Queue : [3, 2]
+Blocked Queue : []
+Process 3 Dispatched.
+Ready Queue : [2]
+Blocked Queue : []
+At Time 17: Process 3 is currently executing.
+At Time 17: Instruction input From Process 3 is currently executing.
+At Time 17 Memory:
+
+Keranl Space:
+Cell 0: Process ID 3
+Cell 1: State RUNNING
+Cell 2: PC 12
+Cell 3: Kernel Space Bound [0,4]
+Cell 4: User Space Bound [10,24]
+Cell 5: Process ID 2
+Cell 6: State READY
+Cell 7: PC 32
+Cell 8: Kernel Space Bound [5,10]
+Cell 9: User Space Bound [25,39]
+User Space:
+Cell 10: Instruction semWait userInput
+Cell 11: Instruction input
+Cell 12: Instruction assign a input
+Cell 13: Instruction semSignal userInput
+Cell 14: Instruction semWait file
+Cell 15: Instruction readFile a
+Cell 16: Instruction assign b readFile
+Cell 17: Instruction semSignal file
+Cell 18: Instruction semWait userOutput
+Cell 19: Instruction print b
+Cell 20: Instruction semSignal userOutput
+Cell 21: Empty
+Cell 22: Empty
+Cell 23: Empty
+Cell 24: Empty
+Cell 25: Instruction semWait userInput
+Cell 26: Instruction input
+Cell 27: Instruction assign a input
+Cell 28: Instruction input
+Cell 29: Instruction assign b input
+Cell 30: Instruction semSignal userInput
+Cell 31: Instruction semWait file
+Cell 32: Instruction writeFile a b
+Cell 33: Instruction semSignal file
+Cell 34: Variable [name=a, Value=hello]
+Cell 35: Variable [name=b, Value=hi]
+Cell 36: Empty
+Cell 37: Empty
+Cell 38: Empty
+Cell 39: Empty
+At Time 17 Disk Contains :
+Process ID 1
+State FINISHED
+PC 19
+Kernel Space Bound [0,4]
+User Space Bound [10,24]
+semWait userInput
+input
+assign a input
+input
+assign b input
+semSignal userInput
+semWait userOutput
+printFromTo a b
+semSignal userOutput
+Variable [name=a, Value=4]
+Variable [name=b, Value=7]
+At Time 18:
+Ready Queue : [2]
+Blocked Queue : []
+At Time 18: Process 3 is currently executing.
+At Time 18: Instruction assign a input From Process 3 is currently executing.
+At Time 18 Memory:
+
+Keranl Space:
+Cell 0: Process ID 3
+Cell 1: State RUNNING
+Cell 2: PC 13
+Cell 3: Kernel Space Bound [0,4]
+Cell 4: User Space Bound [10,24]
+Cell 5: Process ID 2
+Cell 6: State READY
+Cell 7: PC 32
+Cell 8: Kernel Space Bound [5,10]
+Cell 9: User Space Bound [25,39]
+User Space:
+Cell 10: Instruction semWait userInput
+Cell 11: Instruction input
+Cell 12: Instruction assign a input
+Cell 13: Instruction semSignal userInput
+Cell 14: Instruction semWait file
+Cell 15: Instruction readFile a
+Cell 16: Instruction assign b readFile
+Cell 17: Instruction semSignal file
+Cell 18: Instruction semWait userOutput
+Cell 19: Instruction print b
+Cell 20: Instruction semSignal userOutput
+Cell 21: Variable [name=a, Value=hello]
+Cell 22: Empty
+Cell 23: Empty
+Cell 24: Empty
+Cell 25: Instruction semWait userInput
+Cell 26: Instruction input
+Cell 27: Instruction assign a input
+Cell 28: Instruction input
+Cell 29: Instruction assign b input
+Cell 30: Instruction semSignal userInput
+Cell 31: Instruction semWait file
+Cell 32: Instruction writeFile a b
+Cell 33: Instruction semSignal file
+Cell 34: Variable [name=a, Value=hello]
+Cell 35: Variable [name=b, Value=hi]
+Cell 36: Empty
+Cell 37: Empty
+Cell 38: Empty
+Cell 39: Empty
+At Time 18 Disk Contains :
+Process ID 1
+State FINISHED
+PC 19
+Kernel Space Bound [0,4]
+User Space Bound [10,24]
+semWait userInput
+input
+assign a input
+input
+assign b input
+semSignal userInput
+semWait userOutput
+printFromTo a b
+semSignal userOutput
+Variable [name=a, Value=4]
+Variable [name=b, Value=7]
+At Time 19:
+Ready Queue : [2, 3]
+Blocked Queue : []
+Process 2 Dispatched.
+Ready Queue : [3]
+Blocked Queue : []
+At Time 19: Process 2 is currently executing.
+At Time 19: Instruction writeFile a b From Process 2 is currently executing.
+At Time 19 Memory:
+
+Keranl Space:
+Cell 0: Process ID 3
+Cell 1: State READY
+Cell 2: PC 13
+Cell 3: Kernel Space Bound [0,4]
+Cell 4: User Space Bound [10,24]
+Cell 5: Process ID 2
+Cell 6: State RUNNING
+Cell 7: PC 33
+Cell 8: Kernel Space Bound [5,10]
+Cell 9: User Space Bound [25,39]
+User Space:
+Cell 10: Instruction semWait userInput
+Cell 11: Instruction input
+Cell 12: Instruction assign a input
+Cell 13: Instruction semSignal userInput
+Cell 14: Instruction semWait file
+Cell 15: Instruction readFile a
+Cell 16: Instruction assign b readFile
+Cell 17: Instruction semSignal file
+Cell 18: Instruction semWait userOutput
+Cell 19: Instruction print b
+Cell 20: Instruction semSignal userOutput
+Cell 21: Variable [name=a, Value=hello]
+Cell 22: Empty
+Cell 23: Empty
+Cell 24: Empty
+Cell 25: Instruction semWait userInput
+Cell 26: Instruction input
+Cell 27: Instruction assign a input
+Cell 28: Instruction input
+Cell 29: Instruction assign b input
+Cell 30: Instruction semSignal userInput
+Cell 31: Instruction semWait file
+Cell 32: Instruction writeFile a b
+Cell 33: Instruction semSignal file
+Cell 34: Variable [name=a, Value=hello]
+Cell 35: Variable [name=b, Value=hi]
+Cell 36: Empty
+Cell 37: Empty
+Cell 38: Empty
+Cell 39: Empty
+At Time 19 Disk Contains :
+Process ID 1
+State FINISHED
+PC 19
+Kernel Space Bound [0,4]
+User Space Bound [10,24]
+semWait userInput
+input
+assign a input
+input
+assign b input
+semSignal userInput
+semWait userOutput
+printFromTo a b
+semSignal userOutput
+Variable [name=a, Value=4]
+Variable [name=b, Value=7]
+At Time 20:
+Ready Queue : [3]
+Blocked Queue : []
+At Time 20: Process 2 is currently executing.
+At Time 20: Instruction semSignal file From Process 2 is currently executing.
+Process 2 finished.
+Ready Queue : [3]
+Blocked Queue : []
+At Time 20 Memory:
+
+Keranl Space:
+Cell 0: Process ID 3
+Cell 1: State READY
+Cell 2: PC 13
+Cell 3: Kernel Space Bound [0,4]
+Cell 4: User Space Bound [10,24]
+Cell 5: Process ID 2
+Cell 6: State FINISHED
+Cell 7: PC 34
+Cell 8: Kernel Space Bound [5,10]
+Cell 9: User Space Bound [25,39]
+User Space:
+Cell 10: Instruction semWait userInput
+Cell 11: Instruction input
+Cell 12: Instruction assign a input
+Cell 13: Instruction semSignal userInput
+Cell 14: Instruction semWait file
+Cell 15: Instruction readFile a
+Cell 16: Instruction assign b readFile
+Cell 17: Instruction semSignal file
+Cell 18: Instruction semWait userOutput
+Cell 19: Instruction print b
+Cell 20: Instruction semSignal userOutput
+Cell 21: Variable [name=a, Value=hello]
+Cell 22: Empty
+Cell 23: Empty
+Cell 24: Empty
+Cell 25: Instruction semWait userInput
+Cell 26: Instruction input
+Cell 27: Instruction assign a input
+Cell 28: Instruction input
+Cell 29: Instruction assign b input
+Cell 30: Instruction semSignal userInput
+Cell 31: Instruction semWait file
+Cell 32: Instruction writeFile a b
+Cell 33: Instruction semSignal file
+Cell 34: Variable [name=a, Value=hello]
+Cell 35: Variable [name=b, Value=hi]
+Cell 36: Empty
+Cell 37: Empty
+Cell 38: Empty
+Cell 39: Empty
+At Time 20 Disk Contains :
+Process ID 1
+State FINISHED
+PC 19
+Kernel Space Bound [0,4]
+User Space Bound [10,24]
+semWait userInput
+input
+assign a input
+input
+assign b input
+semSignal userInput
+semWait userOutput
+printFromTo a b
+semSignal userOutput
+Variable [name=a, Value=4]
+Variable [name=b, Value=7]
+At Time 21:
+Ready Queue : [3]
+Blocked Queue : []
+Process 3 Dispatched.
+Ready Queue : []
+Blocked Queue : []
+At Time 21: Process 3 is currently executing.
+At Time 21: Instruction semSignal userInput From Process 3 is currently executing.
+At Time 21 Memory:
+
+Keranl Space:
+Cell 0: Process ID 3
+Cell 1: State RUNNING
+Cell 2: PC 14
+Cell 3: Kernel Space Bound [0,4]
+Cell 4: User Space Bound [10,24]
+Cell 5: Process ID 2
+Cell 6: State FINISHED
+Cell 7: PC 34
+Cell 8: Kernel Space Bound [5,10]
+Cell 9: User Space Bound [25,39]
+User Space:
+Cell 10: Instruction semWait userInput
+Cell 11: Instruction input
+Cell 12: Instruction assign a input
+Cell 13: Instruction semSignal userInput
+Cell 14: Instruction semWait file
+Cell 15: Instruction readFile a
+Cell 16: Instruction assign b readFile
+Cell 17: Instruction semSignal file
+Cell 18: Instruction semWait userOutput
+Cell 19: Instruction print b
+Cell 20: Instruction semSignal userOutput
+Cell 21: Variable [name=a, Value=hello]
+Cell 22: Empty
+Cell 23: Empty
+Cell 24: Empty
+Cell 25: Instruction semWait userInput
+Cell 26: Instruction input
+Cell 27: Instruction assign a input
+Cell 28: Instruction input
+Cell 29: Instruction assign b input
+Cell 30: Instruction semSignal userInput
+Cell 31: Instruction semWait file
+Cell 32: Instruction writeFile a b
+Cell 33: Instruction semSignal file
+Cell 34: Variable [name=a, Value=hello]
+Cell 35: Variable [name=b, Value=hi]
+Cell 36: Empty
+Cell 37: Empty
+Cell 38: Empty
+Cell 39: Empty
+At Time 21 Disk Contains :
+Process ID 1
+State FINISHED
+PC 19
+Kernel Space Bound [0,4]
+User Space Bound [10,24]
+semWait userInput
+input
+assign a input
+input
+assign b input
+semSignal userInput
+semWait userOutput
+printFromTo a b
+semSignal userOutput
+Variable [name=a, Value=4]
+Variable [name=b, Value=7]
+At Time 22:
+Ready Queue : []
+Blocked Queue : []
+At Time 22: Process 3 is currently executing.
+At Time 22: Instruction semWait file From Process 3 is currently executing.
+At Time 22 Memory:
+
+Keranl Space:
+Cell 0: Process ID 3
+Cell 1: State RUNNING
+Cell 2: PC 15
+Cell 3: Kernel Space Bound [0,4]
+Cell 4: User Space Bound [10,24]
+Cell 5: Process ID 2
+Cell 6: State FINISHED
+Cell 7: PC 34
+Cell 8: Kernel Space Bound [5,10]
+Cell 9: User Space Bound [25,39]
+User Space:
+Cell 10: Instruction semWait userInput
+Cell 11: Instruction input
+Cell 12: Instruction assign a input
+Cell 13: Instruction semSignal userInput
+Cell 14: Instruction semWait file
+Cell 15: Instruction readFile a
+Cell 16: Instruction assign b readFile
+Cell 17: Instruction semSignal file
+Cell 18: Instruction semWait userOutput
+Cell 19: Instruction print b
+Cell 20: Instruction semSignal userOutput
+Cell 21: Variable [name=a, Value=hello]
+Cell 22: Empty
+Cell 23: Empty
+Cell 24: Empty
+Cell 25: Instruction semWait userInput
+Cell 26: Instruction input
+Cell 27: Instruction assign a input
+Cell 28: Instruction input
+Cell 29: Instruction assign b input
+Cell 30: Instruction semSignal userInput
+Cell 31: Instruction semWait file
+Cell 32: Instruction writeFile a b
+Cell 33: Instruction semSignal file
+Cell 34: Variable [name=a, Value=hello]
+Cell 35: Variable [name=b, Value=hi]
+Cell 36: Empty
+Cell 37: Empty
+Cell 38: Empty
+Cell 39: Empty
+At Time 22 Disk Contains :
+Process ID 1
+State FINISHED
+PC 19
+Kernel Space Bound [0,4]
+User Space Bound [10,24]
+semWait userInput
+input
+assign a input
+input
+assign b input
+semSignal userInput
+semWait userOutput
+printFromTo a b
+semSignal userOutput
+Variable [name=a, Value=4]
+Variable [name=b, Value=7]
+At Time 23:
+Ready Queue : [3]
+Blocked Queue : []
+Process 3 Dispatched.
+Ready Queue : []
+Blocked Queue : []
+At Time 23: Process 3 is currently executing.
+At Time 23: Instruction readFile a From Process 3 is currently executing.
+At Time 23 Memory:
+
+Keranl Space:
+Cell 0: Process ID 3
+Cell 1: State RUNNING
+Cell 2: PC 16
+Cell 3: Kernel Space Bound [0,4]
+Cell 4: User Space Bound [10,24]
+Cell 5: Process ID 2
+Cell 6: State FINISHED
+Cell 7: PC 34
+Cell 8: Kernel Space Bound [5,10]
+Cell 9: User Space Bound [25,39]
+User Space:
+Cell 10: Instruction semWait userInput
+Cell 11: Instruction input
+Cell 12: Instruction assign a input
+Cell 13: Instruction semSignal userInput
+Cell 14: Instruction semWait file
+Cell 15: Instruction readFile a
+Cell 16: Instruction assign b readFile
+Cell 17: Instruction semSignal file
+Cell 18: Instruction semWait userOutput
+Cell 19: Instruction print b
+Cell 20: Instruction semSignal userOutput
+Cell 21: Variable [name=a, Value=hello]
+Cell 22: Empty
+Cell 23: Empty
+Cell 24: Empty
+Cell 25: Instruction semWait userInput
+Cell 26: Instruction input
+Cell 27: Instruction assign a input
+Cell 28: Instruction input
+Cell 29: Instruction assign b input
+Cell 30: Instruction semSignal userInput
+Cell 31: Instruction semWait file
+Cell 32: Instruction writeFile a b
+Cell 33: Instruction semSignal file
+Cell 34: Variable [name=a, Value=hello]
+Cell 35: Variable [name=b, Value=hi]
+Cell 36: Empty
+Cell 37: Empty
+Cell 38: Empty
+Cell 39: Empty
+At Time 23 Disk Contains :
+Process ID 1
+State FINISHED
+PC 19
+Kernel Space Bound [0,4]
+User Space Bound [10,24]
+semWait userInput
+input
+assign a input
+input
+assign b input
+semSignal userInput
+semWait userOutput
+printFromTo a b
+semSignal userOutput
+Variable [name=a, Value=4]
+Variable [name=b, Value=7]
+At Time 24:
+Ready Queue : []
+Blocked Queue : []
+At Time 24: Process 3 is currently executing.
+At Time 24: Instruction assign b readFile From Process 3 is currently executing.
+At Time 24 Memory:
+
+Keranl Space:
+Cell 0: Process ID 3
+Cell 1: State RUNNING
+Cell 2: PC 17
+Cell 3: Kernel Space Bound [0,4]
+Cell 4: User Space Bound [10,24]
+Cell 5: Process ID 2
+Cell 6: State FINISHED
+Cell 7: PC 34
+Cell 8: Kernel Space Bound [5,10]
+Cell 9: User Space Bound [25,39]
+User Space:
+Cell 10: Instruction semWait userInput
+Cell 11: Instruction input
+Cell 12: Instruction assign a input
+Cell 13: Instruction semSignal userInput
+Cell 14: Instruction semWait file
+Cell 15: Instruction readFile a
+Cell 16: Instruction assign b readFile
+Cell 17: Instruction semSignal file
+Cell 18: Instruction semWait userOutput
+Cell 19: Instruction print b
+Cell 20: Instruction semSignal userOutput
+Cell 21: Variable [name=a, Value=hello]
+Cell 22: Variable [name=b, Value=hi]
+Cell 23: Empty
+Cell 24: Empty
+Cell 25: Instruction semWait userInput
+Cell 26: Instruction input
+Cell 27: Instruction assign a input
+Cell 28: Instruction input
+Cell 29: Instruction assign b input
+Cell 30: Instruction semSignal userInput
+Cell 31: Instruction semWait file
+Cell 32: Instruction writeFile a b
+Cell 33: Instruction semSignal file
+Cell 34: Variable [name=a, Value=hello]
+Cell 35: Variable [name=b, Value=hi]
+Cell 36: Empty
+Cell 37: Empty
+Cell 38: Empty
+Cell 39: Empty
+At Time 24 Disk Contains :
+Process ID 1
+State FINISHED
+PC 19
+Kernel Space Bound [0,4]
+User Space Bound [10,24]
+semWait userInput
+input
+assign a input
+input
+assign b input
+semSignal userInput
+semWait userOutput
+printFromTo a b
+semSignal userOutput
+Variable [name=a, Value=4]
+Variable [name=b, Value=7]
+At Time 25:
+Ready Queue : [3]
+Blocked Queue : []
+Process 3 Dispatched.
+Ready Queue : []
+Blocked Queue : []
+At Time 25: Process 3 is currently executing.
+At Time 25: Instruction semSignal file From Process 3 is currently executing.
+At Time 25 Memory:
+
+Keranl Space:
+Cell 0: Process ID 3
+Cell 1: State RUNNING
+Cell 2: PC 18
+Cell 3: Kernel Space Bound [0,4]
+Cell 4: User Space Bound [10,24]
+Cell 5: Process ID 2
+Cell 6: State FINISHED
+Cell 7: PC 34
+Cell 8: Kernel Space Bound [5,10]
+Cell 9: User Space Bound [25,39]
+User Space:
+Cell 10: Instruction semWait userInput
+Cell 11: Instruction input
+Cell 12: Instruction assign a input
+Cell 13: Instruction semSignal userInput
+Cell 14: Instruction semWait file
+Cell 15: Instruction readFile a
+Cell 16: Instruction assign b readFile
+Cell 17: Instruction semSignal file
+Cell 18: Instruction semWait userOutput
+Cell 19: Instruction print b
+Cell 20: Instruction semSignal userOutput
+Cell 21: Variable [name=a, Value=hello]
+Cell 22: Variable [name=b, Value=hi]
+Cell 23: Empty
+Cell 24: Empty
+Cell 25: Instruction semWait userInput
+Cell 26: Instruction input
+Cell 27: Instruction assign a input
+Cell 28: Instruction input
+Cell 29: Instruction assign b input
+Cell 30: Instruction semSignal userInput
+Cell 31: Instruction semWait file
+Cell 32: Instruction writeFile a b
+Cell 33: Instruction semSignal file
+Cell 34: Variable [name=a, Value=hello]
+Cell 35: Variable [name=b, Value=hi]
+Cell 36: Empty
+Cell 37: Empty
+Cell 38: Empty
+Cell 39: Empty
+At Time 25 Disk Contains :
+Process ID 1
+State FINISHED
+PC 19
+Kernel Space Bound [0,4]
+User Space Bound [10,24]
+semWait userInput
+input
+assign a input
+input
+assign b input
+semSignal userInput
+semWait userOutput
+printFromTo a b
+semSignal userOutput
+Variable [name=a, Value=4]
+Variable [name=b, Value=7]
+At Time 26:
+Ready Queue : []
+Blocked Queue : []
+At Time 26: Process 3 is currently executing.
+At Time 26: Instruction semWait userOutput From Process 3 is currently executing.
+At Time 26 Memory:
+
+Keranl Space:
+Cell 0: Process ID 3
+Cell 1: State RUNNING
+Cell 2: PC 19
+Cell 3: Kernel Space Bound [0,4]
+Cell 4: User Space Bound [10,24]
+Cell 5: Process ID 2
+Cell 6: State FINISHED
+Cell 7: PC 34
+Cell 8: Kernel Space Bound [5,10]
+Cell 9: User Space Bound [25,39]
+User Space:
+Cell 10: Instruction semWait userInput
+Cell 11: Instruction input
+Cell 12: Instruction assign a input
+Cell 13: Instruction semSignal userInput
+Cell 14: Instruction semWait file
+Cell 15: Instruction readFile a
+Cell 16: Instruction assign b readFile
+Cell 17: Instruction semSignal file
+Cell 18: Instruction semWait userOutput
+Cell 19: Instruction print b
+Cell 20: Instruction semSignal userOutput
+Cell 21: Variable [name=a, Value=hello]
+Cell 22: Variable [name=b, Value=hi]
+Cell 23: Empty
+Cell 24: Empty
+Cell 25: Instruction semWait userInput
+Cell 26: Instruction input
+Cell 27: Instruction assign a input
+Cell 28: Instruction input
+Cell 29: Instruction assign b input
+Cell 30: Instruction semSignal userInput
+Cell 31: Instruction semWait file
+Cell 32: Instruction writeFile a b
+Cell 33: Instruction semSignal file
+Cell 34: Variable [name=a, Value=hello]
+Cell 35: Variable [name=b, Value=hi]
+Cell 36: Empty
+Cell 37: Empty
+Cell 38: Empty
+Cell 39: Empty
+At Time 26 Disk Contains :
+Process ID 1
+State FINISHED
+PC 19
+Kernel Space Bound [0,4]
+User Space Bound [10,24]
+semWait userInput
+input
+assign a input
+input
+assign b input
+semSignal userInput
+semWait userOutput
+printFromTo a b
+semSignal userOutput
+Variable [name=a, Value=4]
+Variable [name=b, Value=7]
+At Time 27:
+Ready Queue : [3]
+Blocked Queue : []
+Process 3 Dispatched.
+Ready Queue : []
+Blocked Queue : []
+At Time 27: Process 3 is currently executing.
+At Time 27: Instruction print b From Process 3 is currently executing.
+At Time 27 Memory:
+
+Keranl Space:
+Cell 0: Process ID 3
+Cell 1: State RUNNING
+Cell 2: PC 20
+Cell 3: Kernel Space Bound [0,4]
+Cell 4: User Space Bound [10,24]
+Cell 5: Process ID 2
+Cell 6: State FINISHED
+Cell 7: PC 34
+Cell 8: Kernel Space Bound [5,10]
+Cell 9: User Space Bound [25,39]
+User Space:
+Cell 10: Instruction semWait userInput
+Cell 11: Instruction input
+Cell 12: Instruction assign a input
+Cell 13: Instruction semSignal userInput
+Cell 14: Instruction semWait file
+Cell 15: Instruction readFile a
+Cell 16: Instruction assign b readFile
+Cell 17: Instruction semSignal file
+Cell 18: Instruction semWait userOutput
+Cell 19: Instruction print b
+Cell 20: Instruction semSignal userOutput
+Cell 21: Variable [name=a, Value=hello]
+Cell 22: Variable [name=b, Value=hi]
+Cell 23: Empty
+Cell 24: Empty
+Cell 25: Instruction semWait userInput
+Cell 26: Instruction input
+Cell 27: Instruction assign a input
+Cell 28: Instruction input
+Cell 29: Instruction assign b input
+Cell 30: Instruction semSignal userInput
+Cell 31: Instruction semWait file
+Cell 32: Instruction writeFile a b
+Cell 33: Instruction semSignal file
+Cell 34: Variable [name=a, Value=hello]
+Cell 35: Variable [name=b, Value=hi]
+Cell 36: Empty
+Cell 37: Empty
+Cell 38: Empty
+Cell 39: Empty
+At Time 27 Disk Contains :
+Process ID 1
+State FINISHED
+PC 19
+Kernel Space Bound [0,4]
+User Space Bound [10,24]
+semWait userInput
+input
+assign a input
+input
+assign b input
+semSignal userInput
+semWait userOutput
+printFromTo a b
+semSignal userOutput
+Variable [name=a, Value=4]
+Variable [name=b, Value=7]
+At Time 28:
+Ready Queue : []
+Blocked Queue : []
+At Time 28: Process 3 is currently executing.
+At Time 28: Instruction semSignal userOutput From Process 3 is currently executing.
+Process 3 finished.
+Ready Queue : []
+Blocked Queue : []
+At Time 28 Memory:
+
+Keranl Space:
+Cell 0: Process ID 3
+Cell 1: State FINISHED
+Cell 2: PC 21
+Cell 3: Kernel Space Bound [0,4]
+Cell 4: User Space Bound [10,24]
+Cell 5: Process ID 2
+Cell 6: State FINISHED
+Cell 7: PC 34
+Cell 8: Kernel Space Bound [5,10]
+Cell 9: User Space Bound [25,39]
+User Space:
+Cell 10: Instruction semWait userInput
+Cell 11: Instruction input
+Cell 12: Instruction assign a input
+Cell 13: Instruction semSignal userInput
+Cell 14: Instruction semWait file
+Cell 15: Instruction readFile a
+Cell 16: Instruction assign b readFile
+Cell 17: Instruction semSignal file
+Cell 18: Instruction semWait userOutput
+Cell 19: Instruction print b
+Cell 20: Instruction semSignal userOutput
+Cell 21: Variable [name=a, Value=hello]
+Cell 22: Variable [name=b, Value=hi]
+Cell 23: Empty
+Cell 24: Empty
+Cell 25: Instruction semWait userInput
+Cell 26: Instruction input
+Cell 27: Instruction assign a input
+Cell 28: Instruction input
+Cell 29: Instruction assign b input
+Cell 30: Instruction semSignal userInput
+Cell 31: Instruction semWait file
+Cell 32: Instruction writeFile a b
+Cell 33: Instruction semSignal file
+Cell 34: Variable [name=a, Value=hello]
+Cell 35: Variable [name=b, Value=hi]
+Cell 36: Empty
+Cell 37: Empty
+Cell 38: Empty
+Cell 39: Empty
+At Time 28 Disk Contains :
+Process ID 1
+State FINISHED
+PC 19
+Kernel Space Bound [0,4]
+User Space Bound [10,24]
+semWait userInput
+input
+assign a input
+input
+assign b input
+semSignal userInput
+semWait userOutput
+printFromTo a b
+semSignal userOutput
+Variable [name=a, Value=4]
+Variable [name=b, Value=7]

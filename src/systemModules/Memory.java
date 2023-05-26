@@ -28,7 +28,7 @@ public class Memory {
 			else if (currentPc < 25)
 				process.getPCB().setPC(currentPc + 15);
 			process.getPCB().setState(PState.READY);
-			process.getPCB().setKernelBound(5, 10);
+			process.getPCB().setKernelBound(5, 9);
 			process.getPCB().setUserBound(25, 39);
 			fillKernelMemory(5, process.getPCB());
 			fillUserMemory(25, process);
